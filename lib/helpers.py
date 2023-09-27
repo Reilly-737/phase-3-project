@@ -52,20 +52,6 @@ def delete_player():
 ipdb.set_trace()
 
 
-def game_over():
-    print("Game over. Goodbye!")
-    exit()
-
-
-def head_outside():
-    print("You're outside!")
-
-
-def exit_program():
-    print("Goodbye!")
-    exit()
-
-
 def print_slowly(output):
     for char in output:
         print(char, end='', flush=True)
