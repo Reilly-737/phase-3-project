@@ -7,7 +7,7 @@ class MainMenu:
         self.player_name = None 
     def display_menu(self):
         
-        print("~~~~~~", GAME_TITLE, "~~~~~~")
+        print(GAME_TITLE)
         print(GAME_INSTRUCTIONS)
         print("1. Enter Player")
         print("2. Quit")
@@ -55,14 +55,27 @@ class MainMenu:
          #   helpers.exit_game()
           #  exit()
 
-GAME_TITLE = "The Ominous Encounter"
+GAME_TITLE = """
+▄▄▄█████▓ ██░ ██ ▓█████     ▒█████   ███▄ ▄███▓ ██▓ ███▄    █  ▒█████   █    ██   ██████    ▓█████  ███▄    █  ▄████▄   ▒█████   █    ██  ███▄    █ ▄▄▄█████▓▓█████  ██▀███
+▓  ██▒ ▓▒▓██░ ██▒▓█   ▀    ▒██▒  ██▒▓██▒▀█▀ ██▒▓██▒ ██ ▀█   █ ▒██▒  ██▒ ██  ▓██▒▒██    ▒    ▓█   ▀  ██ ▀█   █ ▒██▀ ▀█  ▒██▒  ██▒ ██  ▓██▒ ██ ▀█   █ ▓  ██▒ ▓▒▓█   ▀ ▓██ ▒ ██▒
+▒ ▓██░ ▒░▒██▀▀██░▒███      ▒██░  ██▒▓██    ▓██░▒██▒▓██  ▀█ ██▒▒██░  ██▒▓██  ▒██░░ ▓██▄      ▒███   ▓██  ▀█ ██▒▒▓█    ▄ ▒██░  ██▒▓██  ▒██░▓██  ▀█ ██▒▒ ▓██░ ▒░▒███   ▓██ ░▄█ ▒
+░ ▓██▓ ░ ░▓█ ░██ ▒▓█  ▄    ▒██   ██░▒██    ▒██ ░██░▓██▒  ▐▌██▒▒██   ██░▓▓█  ░██░  ▒   ██▒   ▒▓█  ▄ ▓██▒  ▐▌██▒▒▓▓▄ ▄██▒▒██   ██░▓▓█  ░██░▓██▒  ▐▌██▒░ ▓██▓ ░ ▒▓█  ▄ ▒██▀▀█▄
+  ▒██▒ ░ ░▓█▒░██▓░▒████▒   ░ ████▓▒░▒██▒   ░██▒░██░▒██░   ▓██░░ ████▓▒░▒▒█████▓ ▒██████▒▒   ░▒████▒▒██░   ▓██░▒ ▓███▀ ░░ ████▓▒░▒▒█████▓ ▒██░   ▓██░  ▒██▒ ░ ░▒████▒░██▓ ▒██▒
+  ▒ ░░    ▒ ░░▒░▒░░ ▒░ ░   ░ ▒░▒░▒░ ░ ▒░   ░  ░░▓  ░ ▒░   ▒ ▒ ░ ▒░▒░▒░ ░▒▓▒ ▒ ▒ ▒ ▒▓▒ ▒ ░   ░░ ▒░ ░░ ▒░   ▒ ▒ ░ ░▒ ▒  ░░ ▒░▒░▒░ ░▒▓▒ ▒ ▒ ░ ▒░   ▒ ▒   ▒ ░░   ░░ ▒░ ░░ ▒▓ ░▒▓░
+    ░     ▒ ░▒░ ░ ░ ░  ░     ░ ▒ ▒░ ░  ░      ░ ▒ ░░ ░░   ░ ▒░  ░ ▒ ▒░ ░░▒░ ░ ░ ░ ░▒  ░ ░    ░ ░  ░░ ░░   ░ ▒░  ░  ▒     ░ ▒ ▒░ ░░▒░ ░ ░ ░ ░░   ░ ▒░    ░     ░ ░  ░  ░▒ ░ ▒░
+  ░       ░  ░░ ░   ░      ░ ░ ░ ▒  ░      ░    ▒ ░   ░   ░ ░ ░ ░ ░ ▒   ░░░ ░ ░ ░  ░  ░        ░      ░   ░ ░ ░        ░ ░ ░ ▒   ░░░ ░ ░    ░   ░ ░   ░         ░     ░░   ░
+          ░  ░  ░   ░  ░       ░ ░         ░    ░           ░     ░ ░     ░           ░        ░  ░         ░ ░ ░          ░ ░     ░              ░             ░  ░   ░
+                                                                                                              ░          
+"""
+
 GAME_INSTRUCTIONS = """
 Welcome! 
 Instructions 
- Select "Enter Player" to start or continue your adventure.
- If you have a recorded name, you can choose to start a new game 
-    or continue your current game.
-    (enter more info here )
+Select "Enter Player" to start or continue your adventure.
+If you have a recorded name, you can choose to start a new game 
+or continue your current game.
+Follow the story's choices carefully and make decisions to uncover your fate.
+Enjoy the experience and see where your choices lead you. Good luck! 
 """
 
 if __name__ == "__main__":

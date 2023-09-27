@@ -33,15 +33,17 @@ def continue_game(player_name):
         conn = sqlite3.connect(DATABASE_NAME)
         cursor = conn.cursor()
         
-        cursor.execute("SELECT scene_id FROM players WHERE player_name = ?",(player_name, ))
+        cursor.execute("SELECT scene_id FROM players WHERE player_name = ?",
+                       (player_name, ))
         current_scene_id = cursor.fetchone()[0]
         
-        cursor.execute("SELECT * FROM scenes WHERE scene_id = ?", (current_scene_id,))
+        cursor.execute("SELECT * FROM scenes WHERE scene_id = ?", 
+                       (current_scene_id,))
         scene = cursor.fetchone()
         
         if scene:
             print(f"Continuing game for {player_name}.")
-            print(scene[1])
+            print(scene[0])
         else: 
             print(f"No saved game found for {player_name}. Start new game.")
             start_new_game(player_name)
@@ -103,13 +105,10 @@ def delete_player():
     else:
         print(f'Player {id_} not found')
 
-
-ipdb.set_trace()
-
-
 def print_slowly(output):
     for char in output:
         print(char, end='', flush=True)
         time.sleep(0.008)
         # time.sleep(0)
     print()
+ipdb.set_trace()
