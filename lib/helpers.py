@@ -33,20 +33,27 @@ def continue_game(player_name):
         conn = sqlite3.connect(DATABASE_NAME)
         cursor = conn.cursor()
         
-        cursor.execute("SELECT scene_id FROM players WHERE player_name = ?",
-                       (player_name, ))
-        current_scene_id = cursor.fetchone()[0]
+      
+        cursor.execute("SELECT scene_id FROM players WHERE player_id = ?", (player_name,))
+        current_scene_id = cursor.fetchone()
         
-        cursor.execute("SELECT * FROM scenes WHERE scene_id = ?", 
-                       (current_scene_id,))
-        scene = cursor.fetchone()
-        
-        if scene:
-            print(f"Continuing game for {player_name}.")
-            print(scene[0])
-        else: 
-            print(f"No saved game found for {player_name}. Start new game.")
+        if current_scene_id:
+            current_scene_id = current_scene_id[0]
+            
+          
+            cursor.execute("SELECT * FROM scenes WHERE scene_id = ?", (current_scene_id,))
+            scene = cursor.fetchone()
+            
+            if scene:
+                print(f"Continuing game for {player_name}.")
+                print(scene[0])  
+            else:
+                print(f"Error: Scene data not found for scene_id {current_scene_id}. Starting a new game.")
+                start_new_game(player_name)
+        else:
+            print(f"No saved game found for {player_name}. Starting a new game.")
             start_new_game(player_name)
+        
         conn.close()
     except sqlite3.Error as e: 
         print(f"Oh no. Database error: {e}")
@@ -56,7 +63,7 @@ def delete_game_data(player_name):
         conn = sqlite3.connect(DATABASE_NAME)
         cursor = conn.cursor()
         
-        cursor.execute("DELETE FROM players WHERE player_name = ?", (player_name,))
+        cursor.execute("DELETE FROM players WHERE player_id = ?", (player_name,))
         conn.commit()
         conn.close()
         
