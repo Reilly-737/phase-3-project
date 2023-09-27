@@ -23,6 +23,23 @@ def create_player():
         print("Error creating player_name: ", exc)
 
 
+def update_player():
+    id_ = input("Enter the player's id: ")
+    if player := Player.find_by_id(id_):
+        try:
+            name = input("Enter the players new name: ")
+            player.player_name = name
+            scene = input("Enter the player's current scene: ")
+            player.scene_id = scene
+
+            player.update()
+            print(f'Success: {player}')
+        except Exception as exc:
+            print("Error updating player: ", exc)
+    else:
+        print(f'Player {id_} not found')
+
+
 ipdb.set_trace()
 
 

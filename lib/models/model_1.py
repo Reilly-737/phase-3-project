@@ -48,14 +48,53 @@ class Player:
         player.save()
         return player
 
-    # @classmethod
-    # def get_all(cls):
-    #     """Return a list containing a Player object per row in the table"""
-    #     sql = """
-    #         SELECT *
-    #         FROM players
-    #     """
+    def update(self):
+        """Update the table row corresponding to the current Player instance."""
+        sql = """
+            UPDATE players
+            SET player_name = ?, scene_id = ?
+            WHERE player_id = ?
+        """
+        CURSOR.execute(sql, (self.player_name, self.scene_id, self.id))
+        CONN.commit()
 
-    #     rows = CURSOR.execute(sql).fetchall()
+    @classmethod
+    def instance_from_db(cls, row):
+        """Return a Player object having the attribute values from the table row."""
 
-    #     return [cls.instance_from_db(row) for row in rows]
+        # Check the dictionary for an existing instance using the row's primary key
+        player = cls.all.get(row[0])
+        if player:
+            # ensure attributes match row values in case local instance was modified
+            player.player_name = row[1]
+            player.scene_id = row[2]
+        else:
+            # not in dictionary, create new instance and add to dictionary
+            player = cls(row[1], row[2])
+            player.id = row[0]
+            cls.all[player.id] = player
+        return player
+
+    @classmethod
+    def get_all(cls):
+        """Return a list containing a Player object per row in the table"""
+        sql = """
+            SELECT *
+            FROM players
+        """
+
+        rows = CURSOR.execute(sql).fetchall()
+
+        return [cls.instance_from_db(row) for row in rows]
+
+    @classmethod
+    def find_by_id(cls, player_id):
+        """Return a Player object corresponding to the table row matching the specified primary key"""
+        sql = """
+            SELECT *
+            FROM players
+            WHERE player_id = ?
+        """
+
+        row = CURSOR.execute(sql, (player_id,)).fetchone()
+        return cls.instance_from_db(row) if row else None
