@@ -20,11 +20,10 @@ class Player:
     @player_name.setter
     def player_name(self, player_name):
         if isinstance(player_name, str) and len(player_name) >= 3:
-            self._player_name = player_name
+          self._player_name = player_name
         else:
-            raise ValueError(
-                "player_name must have at least 3 characters."
-            )
+            raise ValueError("player_name must have at least 3 characters.")
+    
 
     def save(self):
         """ Insert a new row with the player_name and scene_id values of the current Player instance.

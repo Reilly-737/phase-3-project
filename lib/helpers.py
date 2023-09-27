@@ -112,6 +112,10 @@ def delete_player():
     else:
         print(f'Player {id_} not found')
 
+
+ipdb.set_trace()
+
+
 def print_slowly(output):
     for char in output:
         print(char, end='', flush=True)
