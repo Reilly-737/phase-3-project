@@ -58,6 +58,24 @@ class Player:
         CURSOR.execute(sql, (self.player_name, self.scene_id, self.id))
         CONN.commit()
 
+    def delete(self):
+        """Delete the table row corresponding to the current Player instance,
+        delete the dictionary entry, and reassign id attribute"""
+
+        sql = """
+            DELETE FROM players
+            WHERE player_id = ?
+        """
+
+        CURSOR.execute(sql, (self.id,))
+        CONN.commit()
+
+        # Delete the dictionary entry using id as the key
+        del type(self).all[self.id]
+
+        # Set the id to None
+        self.id = None
+
     @classmethod
     def instance_from_db(cls, row):
         """Return a Player object having the attribute values from the table row."""
