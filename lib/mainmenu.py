@@ -43,7 +43,7 @@ class MainMenu:
                 helpers.delete_game_data(player_name)
                 break
             elif choice == "exit":
-                helpers.exit_program()
+                helpers.exit_program(player_name)
                 break
             else:
                 print("Whoops! Invalid choice. Please Select a valid option.")

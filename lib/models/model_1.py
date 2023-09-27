@@ -19,11 +19,11 @@ class Player:
 
     @player_name.setter
     def player_name(self, player_name):
-        if isinstance(player_name, str) and len(player_name) >= 6:
+        if isinstance(player_name, str) and len(player_name) >= 3:
             self._player_name = player_name
         else:
             raise ValueError(
-                "player_name must have at least 6 characters."
+                "player_name must have at least 3 characters."
             )
 
     def save(self):
