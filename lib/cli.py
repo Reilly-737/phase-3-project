@@ -178,7 +178,28 @@ def handle_the_encounter_choice(the_encounter_choice):
 
 
 def game_over():
-    print("Game Over. Go home!")
+    print_slowly("Game Over...")
+    print("Type 0 to return to the main menu.")
+    print("Type 1 to return to start a new game.")
+    print("Type 3 to start from the previous scene.")
+
+    try:
+        game_over_choice = int(input('>>> '))
+        handle_game_over_choice(game_over_choice)
+    except ValueError:
+        print("Please enter a valid number (0, 1, or 2).")
+
+
+def handle_game_over_choice(game_over_choice):
+    if game_over_choice == 0:
+        pass  # function to return to main menu
+    elif game_over_choice == 1:
+        introduction()
+    elif game_over_choice == 2:
+        pass  # function to start from previous scene based on player_scene_id
+    else:
+        print("Make a valid selection")
+        return
 
 
 ipdb.set_trace()
