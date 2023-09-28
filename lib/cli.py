@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 
-import ipdb
+# import ipdb
 import sqlite3
 from helpers import *
 from mainmenu import *
-
+from models.model_1 import *
 
 if __name__ == "__main__":
     main_menu()
-    ipdb.set_trace()
+    # ipdb.set_trace()
 
 
 def get_option_description(option_id):
@@ -51,9 +51,9 @@ def introduction():
     option_2_description = get_option_description(2)
     print_slowly(f"""
           {scene_0_description}
-          
+
           Option 1: {option_1_description}
-          
+
           Option 2: {option_2_description}
 
           Which option do you choose? 1 or 2?
@@ -81,14 +81,14 @@ def outside_the_party():
     option_3_description = get_option_description(3)
     option_4_description = get_option_description(4)
     print_slowly(f"""
-          You sip on lemonade, savoring the refreshing taste as you engage in 
-          delightful conversations with your friends. At one point, you decide to 
+          You sip on lemonade, savoring the refreshing taste as you engage in
+          delightful conversations with your friends. At one point, you decide to
           step outside for a quick vape break.
-          
+
           {scene_1_description}
-          
+
           Option 1: {option_3_description}
-          
+
           Option 2: {option_4_description}
 
           Which option do you choose? 1 or 2?
@@ -116,11 +116,11 @@ def following_the_cat():
     option_5_description = get_option_description(5)
     option_6_description = get_option_description(6)
     print_slowly(f"""
-          
+
           {scene_2_description}
 
           Option 1: {option_5_description}
-          
+
           Option 2: {option_6_description}
 
           Which option do you choose? 1 or 2?
@@ -148,11 +148,11 @@ def the_encounter():
     option_7_description = get_option_description(7)
     option_8_description = get_option_description(8)
     print_slowly(f"""
-          
+
           {scene_3_description}
-          
+
           Option 1: {option_7_description}
-          
+
           Option 2: {option_8_description}
 
           Which option do you choose? 1 or 2?
@@ -169,8 +169,8 @@ def handle_the_encounter_choice(the_encounter_choice):
     if the_encounter_choice == 1:
         game_over()
     elif the_encounter_choice == 2:
-        print_slowly("""As the moon wanes, so too must all things find their end. 
-                     But from the ashes of mortality, the phoenix of rebirth shall rise, 
+        print_slowly("""As the moon wanes, so too must all things find their end.
+                     But from the ashes of mortality, the phoenix of rebirth shall rise,
                      ushering in a new chapter of your eternal journey.""")
         # when done, switch to function for the random prophecy
     else:

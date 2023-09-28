@@ -1,9 +1,7 @@
 # lib/helpers.py
-from models.__init__ import CURSOR, CONN
-from models.model_1 import Player
+from models.model_1 import *
 # import ipdb
 import time
-import sqlite3
 import random
 
 DATABASE_NAME = "lib/game.db"
@@ -101,18 +99,21 @@ def list_players():
 
 
 def create_player():
-    player_name = input("Enter your player_name: ")
-    scene_id = input("Enter the current scene id: ")
+    name = input("Enter player name: ")
     try:
-        player = Player.create(player_name, scene_id)
-        print(f"Success: {player.player_name}")
+        player, created = Players.get_or_create(
+            player_name=name, defaults={'scene_id': 0})
+        if created:
+            print(f"Success: {player.player_name} created successfully")
+        else:
+            print(f"Player {player.player_name} already exists.")
     except Exception as exc:
         print("Error creating player_name: ", exc)
 
 
 def update_player():
     id_ = input("Enter the player's id: ")
-    if player := Player.find_by_id(id_):
+    if player := Players.find_by_id(id_):
         try:
             name = input("Enter the players new name: ")
             player.player_name = name
@@ -129,11 +130,14 @@ def update_player():
 
 def delete_player():
     id_ = input("Enter the player's id: ")
-    if player := Player.find_by_id(id_):
+    if player := Players.find_by_id(id_):
         player.delete()
         print(f'Player {id_} deleted')
     else:
         print(f'Player {id_} not found')
 
 
+def initialize_database():
+    with database:
+        database.create_tables([Players, Scenes, Options, Prophecy])
 # ipdb.set_trace()
