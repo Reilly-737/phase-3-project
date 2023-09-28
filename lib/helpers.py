@@ -157,6 +157,43 @@ def initialize_database():
             with database.atomic():
                 Scenes.insert_many(scenes_data).execute()
 
-        # if Options.select().count() == 0:
-        #     options_data =
+        if Options.select().count() == 0:
+            options_data = [
+                {'scene_id': 0, 'next_scene_id': 0, 'option_description':
+                    'Join your friends for more shots and dive headfirst into the night\'s revelry.'},
+                {'scene_id': 0, 'next_scene_id': 1, 'option_description':
+                    'Opt for a more mellow approach, sipping on lemonade as you enjoy the company of your friends'},
+                {'scene_id': 1, 'next_scene_id': 1, 'option_description':
+                    'Continue vaping and head back inside, rejoining the festivities. Game over.'},
+                {'scene_id': 1, 'next_scene_id': 2, 'option_description':
+                    'Curiosity gets the better of you, and you decide to follow the cat behind the shed'},
+                {'scene_id': 2, 'next_scene_id': 3,
+                    'option_description': 'Enter ">_>" to continue'},
+                {'scene_id': 3, 'next_scene_id': 3,
+                    'option_description': 'Attempt to run from the ooze'},
+                {'scene_id': 3, 'next_scene_id': 3,
+                    'option_description': 'Share something unrelated'},
+                {'scene_id': 3, 'next_scene_id': 4,
+                    'option_description': 'Express your desire for a prophecy'}
+            ]
+
+            with database.atomic():
+                Options.insert_many(options_data).execute()
+
+        if Prophecy.select().count() == 0:
+            prophecy_data = [
+                {'prophecy_id': 1, 'prophecy_name': 'Seekers Fate', 'prophecy_description':
+                    'In the depths of darkness, a glimmer of light shall guide you to your destiny. Seek the path less traveled, for therein lies the truth.'},
+                {'prophecy_id': 2, 'prophecy_name': 'Wealth of Self', 'prophecy_description':
+                    'Fortunes may rise and fall like tides, but the true wealth lies within. Seek not the gold of others, but cultivate the treasure of self-awareness, for therein lies the key to prosperity.'},
+                {'prophecy_id': 3, 'prophecy_name': 'Phoenix or Rebirth', 'prophecy_description':
+                    'As the moon wanes, so too must all things find their end. But from the ashes of mortality, the phoenix of rebirth shall rise, ushering in a new chapter of your eternal journey.'},
+                {'prophecy_id': 4, 'prophecy_name': 'Constellations of Connection', 'prophecy_description':
+                    'In the labyrinth of hearts, you will find both love and loss. Trust in the constellations of connection, for even in endings, new beginnings await.'},
+                {'prophecy_id': 5, 'prophecy_name': 'Threads of Life', 'prophecy_description':
+                    'In the tapestry of existence, the threads of your life shall weave a pattern unique to your soul. Embrace the moments, for they are the stitches that bind your story.'}
+            ]
+
+        with database.atomic():
+            Prophecy.insert_many(prophecy_data).execute()
 # ipdb.set_trace()
