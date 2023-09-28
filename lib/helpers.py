@@ -4,6 +4,7 @@ from models.model_1 import Player
 # import ipdb
 import time
 import sqlite3
+import random
 
 DATABASE_NAME = "lib/game.db"
 
