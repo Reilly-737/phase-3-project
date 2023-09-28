@@ -1,12 +1,12 @@
-import ipdb
+# import ipdb
 import helpers
 from helpers import *
 from cli import *
 
 
 def main_menu():
-    print(GAME_TITLE)
-    print(GAME_INSTRUCTIONS)
+    print_somewhat_fast(GAME_TITLE)
+    print_slowly(GAME_INSTRUCTIONS)
     print("1. Enter Player")
     print("2. Quit")
 
@@ -14,7 +14,7 @@ def main_menu():
         choice = input("Select an option: ")
 
         if choice == '1':
-            enter_player()
+            create_player()
         elif choice == '2':
             print("Goodbye!")
             break
@@ -22,32 +22,32 @@ def main_menu():
             print("Please select a valid option.")
 
 
-def enter_player():
-    player_name = input("Enter player name: ")
-    print(f"Welcome, {player_name}!")
+# def enter_player():
+#     player_name = input("Enter player name: ")
+#     print(f"Welcome, {player_name}!")
 
-    while True:
-        choice = input(
-            "Start a new game (new). Continue current game(con). Delete current game(del). Exit(exit).")
+#     while True:
+#         choice = input(
+#             "Start a new game (new). Continue current game(con). Delete current game(del). Exit(exit).")
 
-        if choice == "new":
-            helpers.start_new_game(player_name)
-            introduction()
-            break
-        elif choice == "con":
-            helpers.continue_game(player_name)
-            break
-        elif choice == "del":
-            helpers.delete_game_data(player_name)
-            break
-        elif choice == "exit":
-            helpers.exit_program(player_name)
-            break
-        else:
-            print("Whoops! Invalid choice. Please Select a valid option.")
+#         if choice == "new":
+#             helpers.start_new_game(player_name)
+#             introduction()
+#             break
+#         elif choice == "con":
+#             helpers.continue_game(player_name)
+#             break
+#         elif choice == "del":
+#             helpers.delete_game_data(player_name)
+#             break
+#         elif choice == "exit":
+#             helpers.exit_program(player_name)
+#             break
+#         else:
+#             print("Whoops! Invalid choice. Please Select a valid option.")
 
 
-GAME_TITLE = print_somewhat_fast("""
+GAME_TITLE = """
 ▄▄▄█████▓ ██░ ██ ▓█████     ▒█████   ███▄ ▄███▓ ██▓ ███▄    █  ▒█████   █    ██   ██████    ▓█████  ███▄    █  ▄████▄   ▒█████   █    ██  ███▄    █ ▄▄▄█████▓▓█████  ██▀███
 ▓  ██▒ ▓▒▓██░ ██▒▓█   ▀    ▒██▒  ██▒▓██▒▀█▀ ██▒▓██▒ ██ ▀█   █ ▒██▒  ██▒ ██  ▓██▒▒██    ▒    ▓█   ▀  ██ ▀█   █ ▒██▀ ▀█  ▒██▒  ██▒ ██  ▓██▒ ██ ▀█   █ ▓  ██▒ ▓▒▓█   ▀ ▓██ ▒ ██▒
 ▒ ▓██░ ▒░▒██▀▀██░▒███      ▒██░  ██▒▓██    ▓██░▒██▒▓██  ▀█ ██▒▒██░  ██▒▓██  ▒██░░ ▓██▄      ▒███   ▓██  ▀█ ██▒▒▓█    ▄ ▒██░  ██▒▓██  ▒██░▓██  ▀█ ██▒▒ ▓██░ ▒░▒███   ▓██ ░▄█ ▒
@@ -58,9 +58,9 @@ GAME_TITLE = print_somewhat_fast("""
   ░       ░  ░░ ░   ░      ░ ░ ░ ▒  ░      ░    ▒ ░   ░   ░ ░ ░ ░ ░ ▒   ░░░ ░ ░ ░  ░  ░        ░      ░   ░ ░ ░        ░ ░ ░ ▒   ░░░ ░ ░    ░   ░ ░   ░         ░     ░░   ░
           ░  ░  ░   ░  ░       ░ ░         ░    ░           ░     ░ ░     ░           ░        ░  ░         ░ ░ ░          ░ ░     ░              ░             ░  ░   ░
                                                                                                               ░          
-""")
+"""
 
-GAME_INSTRUCTIONS = print_slowly("""
+GAME_INSTRUCTIONS = """
 Welcome! 
 Instructions 
 Select "Enter Player" to start or continue your adventure.
@@ -68,9 +68,4 @@ If you have a recorded name, you can choose to start a new game
 or continue your current game.
 Follow the story's choices carefully and make decisions to uncover your fate.
 Enjoy the experience and see where your choices lead you. Good luck! 
-""")
-
-if __name__ == "__main__":
-    main_menu()
-
-ipdb.set_trace()
+"""

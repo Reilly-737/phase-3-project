@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
 
-# import ipdb
+import ipdb
 import sqlite3
 from helpers import *
+from mainmenu import *
+
+
+if __name__ == "__main__":
+    main_menu()
+    ipdb.set_trace()
 
 
 def get_option_description(option_id):
@@ -163,7 +169,10 @@ def handle_the_encounter_choice(the_encounter_choice):
     if the_encounter_choice == 1:
         game_over()
     elif the_encounter_choice == 2:
-        pass  # function for the random prophecy
+        print_slowly("""As the moon wanes, so too must all things find their end. 
+                     But from the ashes of mortality, the phoenix of rebirth shall rise, 
+                     ushering in a new chapter of your eternal journey.""")
+        # when done, switch to function for the random prophecy
     else:
         print("Make a valid selection")
         return
@@ -173,7 +182,7 @@ def game_over():
     print_slowly("Game Over...")
     print("Type 0 to return to the main menu.")
     print("Type 1 to return to start a new game.")
-    print("Type 3 to start from the previous scene.")
+    print("Type 2 to start from the previous scene.")
 
     try:
         game_over_choice = int(input('>>> '))
@@ -192,6 +201,3 @@ def handle_game_over_choice(game_over_choice):
     else:
         print("Make a valid selection")
         return
-
-
-# ipdb.set_trace()
