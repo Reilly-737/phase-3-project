@@ -194,6 +194,6 @@ def initialize_database():
                     'In the tapestry of existence, the threads of your life shall weave a pattern unique to your soul. Embrace the moments, for they are the stitches that bind your story.'}
             ]
 
-        with database.atomic():
-            Prophecy.insert_many(prophecy_data).execute()
+            with database.atomic():
+                Prophecy.insert_many(prophecy_data).execute()
 # ipdb.set_trace()
