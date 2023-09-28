@@ -7,8 +7,8 @@ from mainmenu import *
 from models.model_1 import *
 
 if __name__ == "__main__":
+    initialize_database()
     main_menu()
-    # ipdb.set_trace()
 
 
 def get_option_description(option_id):

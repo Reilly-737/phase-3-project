@@ -139,5 +139,24 @@ def delete_player():
 
 def initialize_database():
     with database:
-        database.create_tables([Players, Scenes, Options, Prophecy])
+        database.create_tables([Players, Scenes, Options, Prophecy], safe=True)
+
+        if Scenes.select().count() == 0:
+            scenes_data = [
+                {'scene_id': 0, 'scene_name': 'Introduction', 'scene_description':
+                    'You find yourself amidst a vibrant party with your friends, the music pulsating through the air as laughter fills the room. You''re faced with a choice:'},
+                {'scene_id': 1, 'scene_name': 'Outside the Party', 'scene_description':
+                    'As you exhale a puff of vapor, you notice a black cat with striking green eyes in the yard, peacefully minding its own business. Your options beckon:'},
+                {'scene_id': 2, 'scene_name': 'Following the Cat', 'scene_description': 'You stealthily follow the mysterious feline behind the shed, only to find that it has vanished without a trace. Instead, you encounter something utterly unexpected—a colossal pile of black ooze. It ripples and shifts, and from the center emerges a massive bright blue eye, akin to the evil eye shade of blue with a black center. The eye locks onto you; its presence unnerving.'},
+                {'scene_id': 3, 'scene_name': 'The Encounter', 'scene_description':
+                    'The tone shifts from the jovial party atmosphere to an eerie, all-knowing aura. It speaks to you through telepathy, its voice echoing in your mind. Ooze (telepathically): "You have shown courage by following me here, mortal. I am a being of ancient knowledge and power. Tell me, what do you seek?" You can sense that this ooze knows more than it lets on. Your choices lie before you:'},
+                {'scene_id': 4, 'scene_name': 'THE END', 'scene_description':
+                    'Ooze (telepathically): "Very well, seeker of knowledge. Your fate is written on the canvas of time." The eye''s gaze intensifies, and before you can react, it knocks you out. When you wake up, you find yourself on the porch, a prophecy etched onto the inside of your arm, your mind forever marked by the encounter. (Prophecy) Game Over.'}
+            ]
+
+            with database.atomic():
+                Scenes.insert_many(scenes_data).execute()
+
+        # if Options.select().count() == 0:
+        #     options_data =
 # ipdb.set_trace()
