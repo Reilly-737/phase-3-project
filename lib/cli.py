@@ -1,16 +1,8 @@
 #!/usr/bin/env python3
 
-import ipdb
+# import ipdb
 import sqlite3
-import time
-
-
-def print_slowly(output):
-    for char in output:
-        print(char, end='', flush=True)
-        time.sleep(0.008)
-        # time.sleep(0)
-    print()
+from helpers import *
 
 
 def get_option_description(option_id):
@@ -202,4 +194,4 @@ def handle_game_over_choice(game_over_choice):
         return
 
 
-ipdb.set_trace()
+# ipdb.set_trace()

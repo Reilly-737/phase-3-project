@@ -1,15 +1,30 @@
 # lib/helpers.py
 from models.__init__ import CURSOR, CONN
 from models.model_1 import Player
+# import ipdb
 import time
-import ipdb
 import sqlite3
 
 DATABASE_NAME = "lib/game.db"
 
-import sqlite3
 
 DATABASE_NAME = "lib/game.db"
+
+
+def print_slowly(output):
+    for char in output:
+        print(char, end='', flush=True)
+        time.sleep(0.008)
+        # time.sleep(0)
+    print()
+
+
+def print_somewhat_fast(output):
+    for char in output:
+        print(char, end='', flush=True)
+        time.sleep(0.002)
+        # time.sleep(0)
+    print()
 
 
 def start_new_game(player_name):
@@ -28,49 +43,55 @@ def start_new_game(player_name):
         print(f"New game started for {player_name}.")
     except sqlite3.Error as e:
         print(f"Database error: {e}")
-        
+
+
 def continue_game(player_name):
     try:
         conn = sqlite3.connect(DATABASE_NAME)
         cursor = conn.cursor()
-        
-      
-        cursor.execute("SELECT scene_id FROM players WHERE player_id = ?", (player_name,))
+
+        cursor.execute(
+            "SELECT scene_id FROM players WHERE player_id = ?", (player_name,))
         current_scene_id = cursor.fetchone()
-        
+
         if current_scene_id:
             current_scene_id = current_scene_id[0]
-            
-          
-            cursor.execute("SELECT * FROM scenes WHERE scene_id = ?", (current_scene_id,))
+
+            cursor.execute(
+                "SELECT * FROM scenes WHERE scene_id = ?", (current_scene_id,))
             scene = cursor.fetchone()
-            
+
             if scene:
                 print(f"Continuing game for {player_name}.")
-                print(scene[0])  
+                print(scene[0])
             else:
-                print(f"Error: Scene data not found for scene_id {current_scene_id}. Starting a new game.")
+                print(
+                    f"Error: Scene data not found for scene_id {current_scene_id}. Starting a new game.")
                 start_new_game(player_name)
         else:
-            print(f"No saved game found for {player_name}. Starting a new game.")
+            print(
+                f"No saved game found for {player_name}. Starting a new game.")
             start_new_game(player_name)
-        
+
         conn.close()
-    except sqlite3.Error as e: 
+    except sqlite3.Error as e:
         print(f"Oh no. Database error: {e}")
-        
+
+
 def delete_game_data(player_name):
-    try: 
+    try:
         conn = sqlite3.connect(DATABASE_NAME)
         cursor = conn.cursor()
-        
-        cursor.execute("DELETE FROM players WHERE player_id = ?", (player_name,))
+
+        cursor.execute(
+            "DELETE FROM players WHERE player_id = ?", (player_name,))
         conn.commit()
         conn.close()
-        
+
         print(f"Game data for {player_name} deleted.")
     except sqlite3.Error as e:
         print(f"oops! Database error: {e}")
+
 
 def list_players():
     players = Player.get_all()
@@ -114,27 +135,4 @@ def delete_player():
         print(f'Player {id_} not found')
 
 
-ipdb.set_trace()
-
-
-def game_over():
-    print("Game over. Goodbye!")
-    exit()
-
-
-def head_outside():
-    print("You're outside!")
-
-
-def exit_program():
-    print("Goodbye!")
-    exit()
-
-
-def print_slowly(output):
-    for char in output:
-        print(char, end='', flush=True)
-        time.sleep(0.008)
-        # time.sleep(0)
-    print()
-ipdb.set_trace()
+# ipdb.set_trace()
