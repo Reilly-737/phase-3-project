@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-# import ipdb
-import sqlite3
+import ipdb
 from helpers import *
 from mainmenu import *
 from models.model_1 import *
@@ -9,46 +8,23 @@ from models.model_1 import *
 if __name__ == "__main__":
     initialize_database()
     main_menu()
+    ipdb.set_trace()
 
 
-def get_option_description(option_id):
-    conn = sqlite3.connect('game.db')
-    cursor = conn.cursor()
-
-    cursor.execute(
-        "SELECT option_description FROM options WHERE option_id = ?", (option_id,))
-    result = cursor.fetchone()
-
-    cursor.close()
-    conn.close()
-
-    if result:
-        return result[0]
-    else:
-        return None
+def display_scene_description(scene_id):
+    scene = Scenes.get(Scenes.scene_id == scene_id)
+    return (scene.scene_description)
 
 
-def get_scene_description(scene_id):
-    conn = sqlite3.connect('game.db')
-    cursor = conn.cursor()
-
-    cursor.execute(
-        "SELECT scene_description FROM scenes WHERE scene_id = ?", (scene_id,))
-    result = cursor.fetchone()
-
-    cursor.close()
-    conn.close()
-
-    if result:
-        return result[0]
-    else:
-        return None
+def display_option_description(option_id):
+    option = Options.get(Options.option_id == option_id)
+    return (option.option_description)
 
 
 def introduction():
-    scene_0_description = get_scene_description(0)
-    option_1_description = get_option_description(1)
-    option_2_description = get_option_description(2)
+    scene_0_description = display_scene_description(0)
+    option_1_description = display_option_description(1)
+    option_2_description = display_option_description(2)
     print_slowly(f"""
           {scene_0_description}
 
@@ -77,9 +53,9 @@ def handle_introduction(introchoice):
 
 
 def outside_the_party():
-    scene_1_description = get_scene_description(1)
-    option_3_description = get_option_description(3)
-    option_4_description = get_option_description(4)
+    scene_1_description = display_scene_description(1)
+    option_3_description = display_option_description(3)
+    option_4_description = display_option_description(4)
     print_slowly(f"""
           You sip on lemonade, savoring the refreshing taste as you engage in
           delightful conversations with your friends. At one point, you decide to
@@ -112,9 +88,9 @@ def handle_outside_the_party_choice(outside_the_party_choice):
 
 
 def following_the_cat():
-    scene_2_description = get_scene_description(2)
-    option_5_description = get_option_description(5)
-    option_6_description = get_option_description(6)
+    scene_2_description = display_scene_description(2)
+    option_5_description = display_option_description(5)
+    option_6_description = display_option_description(6)
     print_slowly(f"""
 
           {scene_2_description}
@@ -144,9 +120,9 @@ def handle_following_the_cat_choice(following_the_cat_choice):
 
 
 def the_encounter():
-    scene_3_description = get_scene_description(3)
-    option_7_description = get_option_description(7)
-    option_8_description = get_option_description(8)
+    scene_3_description = display_scene_description(3)
+    option_7_description = display_option_description(7)
+    option_8_description = display_option_description(8)
     print_slowly(f"""
 
           {scene_3_description}

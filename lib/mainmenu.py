@@ -14,6 +14,7 @@ def main_menu():
 
         if choice == '1':
             create_player()
+            introduction()
         elif choice == '2':
             print("Goodbye!")
             break
