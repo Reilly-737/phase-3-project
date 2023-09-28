@@ -5,6 +5,9 @@ from models.__init__ import CONN, CURSOR
 
 from models.model_1 import Player
 
+import helpers
+import cli
+
 import ipdb
 
 

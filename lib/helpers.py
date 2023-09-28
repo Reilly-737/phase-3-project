@@ -1,10 +1,11 @@
 # lib/helpers.py
-
+from models.__init__ import CURSOR, CONN
 from models.model_1 import Player
-
 import time
-
 import ipdb
+import sqlite3
+
+DATABASE_NAME = "lib/game.db"
 
 import sqlite3
 
@@ -114,6 +115,20 @@ def delete_player():
 
 
 ipdb.set_trace()
+
+
+def game_over():
+    print("Game over. Goodbye!")
+    exit()
+
+
+def head_outside():
+    print("You're outside!")
+
+
+def exit_program():
+    print("Goodbye!")
+    exit()
 
 
 def print_slowly(output):
