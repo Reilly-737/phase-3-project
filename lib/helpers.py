@@ -42,8 +42,13 @@ def list_players():
     if players:
         for player in players:
             player_progress = display_scene_name(player.scene_id)
-            print(
-                f"Player Name: {player.player_name}, Save Location: {player_progress}")
+            print_slowly(f"Player Name: {player.player_name}")
+            print_slowly(f"    Save Location: {player_progress}")
+            print("----------------------------")
+            print()
+            print()
+            print()
+
     else:
         print("No players found.")
 
@@ -54,9 +59,13 @@ def create_player():
         player, created = Players.get_or_create(
             player_name=name, defaults={'scene_id': 0})
         if created:
-            print(f"Success: {player.player_name} created successfully")
+            print("----------------------------")
+            print_slowly(f"Success: {player.player_name} created successfully")
+            print("----------------------------")
         else:
-            print(f"Player {player.player_name} already exists.")
+            print("----------------------------")
+            print_slowly(f"Player {player.player_name} already exists.")
+            print("----------------------------")
     except Exception as exc:
         print("Error creating player_name: ", exc)
 
