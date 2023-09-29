@@ -100,12 +100,16 @@ def create_player():
             player_name=name, defaults={'scene_id': 0})
         if created:
             success_message = f"{player.player_name} created successfully"
+            print()
             print(success_message, end='', flush=True)
+            print()
             time.sleep(2)
             print("\r" + " " * len(success_message) + "\r", end='', flush=True)
             print_centered("~🧿~Let's Begin!~🧿~")
         else:
+            print()
             print(f"Player {player.player_name} already exists.")
+            print()
             time.sleep(2)
             print_centered("~🧿~Let's Begin!~🧿~")
 
