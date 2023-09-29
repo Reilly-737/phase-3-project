@@ -150,7 +150,8 @@ def delete_player():
     try:
         player = Players.get(Players.player_name == player_name)
         player.delete_instance()
-        print(f"Player {player.player_name} deleted successfully.")
+        print_slowly(f"{player.player_name} has been deleted.")
+        print()
     except Players.DoesNotExist:
         print("Player not found.")
 
