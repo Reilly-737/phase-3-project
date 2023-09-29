@@ -102,20 +102,16 @@ def create_player():
             success_message = f"{player.player_name} created successfully"
             print()
             print(success_message, end='', flush=True)
-            print()
             time.sleep(2)
             print("\r" + " " * len(success_message) + "\r", end='', flush=True)
             print_centered("~🧿~Let's Begin!~🧿~")
         else:
+            welcome_message = f"Welcome back, {player.player_name}."
             print()
-            print(f"Player {player.player_name} already exists.")
-            print()
+            print(welcome_message, end='', flush=True)
             time.sleep(2)
+            print("\r" + " " * len(welcome_message) + "\r", end='', flush=True)
             print_centered("~🧿~Let's Begin!~🧿~")
-
-            print("----------------------------")
-            print_slowly(f"Success: {player.player_name} created successfully")
-            print("----------------------------")
 
     except Exception as exc:
         print("Error creating player_name: ", exc)
