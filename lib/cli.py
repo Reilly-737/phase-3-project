@@ -19,11 +19,11 @@ def introduction():
     print_slowly(f"""
           {scene_0_description}
 
-          Option 1: {option_1_description}
+              Option 1: {option_1_description}
 
-          Option 2: {option_2_description}
+              Option 2: {option_2_description}
 
-          Which option do you choose? 1 or 2?
+            Which option do you choose? 1 or 2?
 
           """)
       
@@ -47,17 +47,13 @@ def outside_the_party():
     option_3_description = display_option_description(3)
     option_4_description = display_option_description(4)
     print_slowly(f"""
-          You sip on lemonade, savoring the refreshing taste as you engage in
-          delightful conversations with your friends. At one point, you decide to
-          step outside for a quick vape break.
-
           {scene_1_description}
 
-          Option 1: {option_3_description}
+              Option 1: {option_3_description}
 
-          Option 2: {option_4_description}
+              Option 2: {option_4_description}
 
-          Which option do you choose? 1 or 2?
+            Which option do you choose? 1 or 2?
           """)
    # print_slowly_centered(introduction)
 
@@ -82,7 +78,7 @@ def following_the_cat():
 
           {scene_2_description}
 
-          {option_5_description}
+            {option_5_description}
 
           """)
 
@@ -106,13 +102,12 @@ def the_encounter():
 
           {scene_3_description}
 
-          Option 1: {option_6_description}
+              Option 1: {option_6_description}
 
-          Option 2: {option_7_description}
+              Option 2: {option_7_description}
 
-          Which option do you choose? 1 or 2?
+            Which option do you choose? 1 or 2?
           """)
-
     try:
         the_encounter_choice = int(input('>>> '))
         if the_encounter_choice == 1:
@@ -120,6 +115,7 @@ def the_encounter():
         elif the_encounter_choice == 2:
             print()
             game_over_message = """
+
             Ooze (telepathically):
             Very well, seeker of knowledge. Your fate is written on the canvas of time.
             The eye's gaze intensifies, and before you can react, it knocks you out.
@@ -132,6 +128,7 @@ def the_encounter():
             print()
             print_slowly(random_prophecy)
             print()
+
               
             print_somewhat_fast("""
    _______.-. .-. .--. .-. .-.,-. .-.  .---.                               
@@ -156,11 +153,14 @@ def the_encounter():
         Restart, and let the eerie echoes of your decisions haunt your next journey.
                          """)
             
+
         else:
             print("Make a valid selection or death and destruction await you.")
             return
     except ValueError:
+
             print("Please enter a valid number (1 or 2).")  
+
 
 
 def game_over(game_over_id):
