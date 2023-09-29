@@ -146,13 +146,14 @@ def change_player_name():
 
 
 def delete_player():
-
-    id_ = input("Enter the player's id: ")
-    if player := Players.find_by_id(id_):
-        player.delete()
-        print(f'Player {id_} deleted')
-    else:
-        print(f'Player {id_} not found')
+    player_name = str(
+        input("Enter the name of the player you wish to delete: "))
+    try:
+        player = Players.get(Players.player_name == player_name)
+        player.delete_instance()
+        print(f"Player {player.player_name} deleted successfully.")
+    except Players.DoesNotExist:
+        print("Player not found.")
 
 
 def get_random_prophecy():
@@ -161,16 +162,6 @@ def get_random_prophecy():
         return "The Ooze has spared you of prophecy. Enjoy the lie of free will."
     random_prophecy = random.choice(prophecies)
     return random_prophecy.prophecy_description
-
-    player_name = str(
-        input("Enter the name of the player you wish to delete: "))
-
-    try:
-        player = Players.get(Players.player_name == player_name)
-        player.delete_instance()
-        print(f"Player {player.player_name} deleted successfully.")
-    except Players.DoesNotExist:
-        print("Player not found.")
 
 
 def initialize_database():
