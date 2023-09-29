@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-#import ipdb
+# import ipdb
 from helpers import *
 from mainmenu import *
 from models.model_1 import *
@@ -24,9 +24,9 @@ def introduction():
           Option 2: {option_2_description}
 
           Which option do you choose? 1 or 2?
-          
+
           """)
-    #print_slowly_centered(introduction)
+    # print_slowly_centered(introduction)
 
     try:
         introchoice = int(input('>>> '))
@@ -82,21 +82,21 @@ def following_the_cat():
           {scene_2_description}
 
           {option_5_description}
-          
+
           """)
 
     try:
         following_the_cat_choice = int(input('>>> '))
         if following_the_cat_choice == 1:
-        the_encounter()
-    else:
-        print("Make a valid selection")
-        return
-       
+            the_encounter()
+        else:
+            print("Make a valid selection")
+            return
+
     except ValueError:
         print("Please enter a valid number (1 or 2).")
 
-        
+
 def the_encounter():
     scene_3_description = display_scene_description(3)
     option_6_description = display_option_description(6)
@@ -128,21 +128,20 @@ def the_encounter():
         print("Please enter a valid number (1 or 2).")
 
 
-
 def handle_the_encounter_choice(the_encounter_choice):
     if the_encounter_choice == 1:
         game_over()
     elif the_encounter_choice == 2:
         print()
         game_over_message = """
-            Ooze (telepathically): 
+            Ooze (telepathically):
             Very well, seeker of knowledge. Your fate is written on the canvas of time.
-            The eye's gaze intensifies, and before you can react, it knocks you out. 
+            The eye's gaze intensifies, and before you can react, it knocks you out.
             When you wake up, you find yourself on the porch, a prophecy etched onto the inside of your arm,
             your mind forever marked by the encounter."""
         print()
         random_prophecy = get_random_prophecy()
-        
+
         print_somewhat_fast(game_over_message)
         print()
         print_slowly(random_prophecy)
@@ -150,6 +149,7 @@ def handle_the_encounter_choice(the_encounter_choice):
     else:
         print("Make a valid selection or death and destruction await you.")
         return
+
 
 def game_over(game_over_id):
 
