@@ -11,16 +11,6 @@ if __name__ == "__main__":
     ipdb.set_trace()
 
 
-def display_scene_description(scene_id):
-    scene = Scenes.get(Scenes.scene_id == scene_id)
-    return (scene.scene_description)
-
-
-def display_option_description(option_id):
-    option = Options.get(Options.option_id == option_id)
-    return (option.option_description)
-
-
 def introduction():
     scene_0_description = display_scene_description(0)
     option_1_description = display_option_description(1)
@@ -141,19 +131,19 @@ def the_encounter():
 def game_over():
 
     print_somewhat_fast("""
-  ▄████  ▄▄▄      ███▄ ▄███▓▓█████     ▒█████   ██▒   █▓▓█████  ██▀███  
+  ▄████  ▄▄▄      ███▄ ▄███▓▓█████     ▒█████   ██▒   █▓▓█████  ██▀███
  ██▒ ▀█▒▒████▄   ▓██▒▀█▀ ██▒▓█   ▀    ▒██▒  ██▒▓██░   █▒▓█   ▀ ▓██ ▒ ██▒
 ▒██░▄▄▄░▒██  ▀█▄ ▓██    ▓██░▒███      ▒██░  ██▒ ▓██  █▒░▒███   ▓██ ░▄█ ▒
-░▓█  ██▓░██▄▄▄▄██▒██    ▒██ ▒▓█  ▄    ▒██   ██░  ▒██ █░░▒▓█  ▄ ▒██▀▀█▄  
+░▓█  ██▓░██▄▄▄▄██▒██    ▒██ ▒▓█  ▄    ▒██   ██░  ▒██ █░░▒▓█  ▄ ▒██▀▀█▄
 ░▒▓███▀▒ ▓█   ▓██▒██▒   ░██▒░▒████▒   ░ ████▓▒░   ▒▀█░  ░▒████▒░██▓ ▒██▒
  ░▒   ▒  ▒▒   ▓▒█░ ▒░   ░  ░░░ ▒░ ░   ░ ▒░▒░▒░    ░ ▐░  ░░ ▒░ ░░ ▒▓ ░▒▓░
   ░   ░   ▒   ▒▒ ░  ░      ░ ░ ░  ░     ░ ▒ ▒░    ░ ░░   ░ ░  ░  ░▒ ░ ▒░
-░ ░   ░   ░   ▒  ░      ░      ░      ░ ░ ░ ▒       ░░     ░     ░░   ░ 
-      ░       ░  ░      ░      ░  ░       ░ ░        ░     ░  ░   ░     
-                                                    ░                   
+░ ░   ░   ░   ▒  ░      ░      ░      ░ ░ ░ ▒       ░░     ░     ░░   ░
+      ░       ░  ░      ░      ░  ░       ░ ░        ░     ░  ░   ░
+                                                    ░
 
-                        
-                        
+
+
                         """)
 
     print("Type 0 to return to the main menu.")
