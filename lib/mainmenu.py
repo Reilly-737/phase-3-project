@@ -56,7 +56,6 @@ def main_menu():
             break
         else:
             print("Please select a valid option.")
-        print_slowly("~🧿~Let's Begin!~🧿~")
 
 
 game_title = """
