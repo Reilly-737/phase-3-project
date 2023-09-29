@@ -50,17 +50,6 @@ def print_somewhat_fast(output):
         # time.sleep(0)
     print()
 
-# def print_slowly_centered(output):
-   # lines = output.split('\n')
-   # for line in lines:
-    #  print_centered_slowly(line)
-
-# def print_centered_slowly(message):
-  #  terminal_width = 75
- #   padding = " " * ((terminal_width - len(message)) // 2)
-   # print_slowly(padding + message)
-
-
 def print_table(headers, data):
     # Calculate the maximum width for each column based on the headers and data
     column_widths = [max(len(str(item)) for item in col)
@@ -156,14 +145,14 @@ def delete_player():
         print()
     except Players.DoesNotExist:
         print("Player not found.")
-
-
+        
 def get_random_prophecy():
     prophecies = Prophecy.select()
     if prophecies.count() == 0:
-        return "The Ooze has spared you of prophecy. Enjoy the lie of free will."
+            return "The Ooze has spared you of prophecy. Enjoy the lie of free will."
     random_prophecy = random.choice(prophecies)
-    return random_prophecy.prophecy_description
+    return random_prophecy.prophecy_description      
+
 
 
 def initialize_database():
