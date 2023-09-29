@@ -5,11 +5,9 @@ import time
 import random
 
 
-
 def game_over_description(game_over_id):
     end_message = Game_Over.get(Game_Over.game_over_id == game_over_id)
     return (end_message.game_over_description)
-
 
 
 def display_scene_description(scene_id):
@@ -51,14 +49,14 @@ def print_somewhat_fast(output):
         time.sleep(0.002)
         # time.sleep(0)
     print()
-    
-#def print_slowly_centered(output):
+
+# def print_slowly_centered(output):
    # lines = output.split('\n')
    # for line in lines:
-      #  print_centered_slowly(line)
+    #  print_centered_slowly(line)
 
-#def print_centered_slowly(message):
-  #  terminal_width = 75  
+# def print_centered_slowly(message):
+  #  terminal_width = 75
  #   padding = " " * ((terminal_width - len(message)) // 2)
    # print_slowly(padding + message)
 
@@ -115,24 +113,22 @@ def create_player():
             print("----------------------------")
             print_slowly(f"Success: {player.player_name} created successfully")
             print("----------------------------")
-        else:
-            print("----------------------------")
-            print_slowly(f"Player {player.player_name} already exists.")
-            print("----------------------------")
 
     except Exception as exc:
         print("Error creating player_name: ", exc)
         print()
-        
+
+
 def print_centered(message):
-    terminal_width = 75  
+    terminal_width = 75
     padding = " " * ((terminal_width - len(message)) // 2)
     print(padding + message)
-        
+
+
 def remove_message(delay):
     time.sleep(delay)
     print("\033[A\033[K", end="")
-    
+
 
 def change_player_name():
     try:
@@ -157,14 +153,14 @@ def delete_player():
         print(f'Player {id_} deleted')
     else:
         print(f'Player {id_} not found')
-        
+
+
 def get_random_prophecy():
     prophecies = Prophecy.select()
     if prophecies.count() == 0:
-            return "The Ooze has spared you of prophecy. Enjoy the lie of free will."
+        return "The Ooze has spared you of prophecy. Enjoy the lie of free will."
     random_prophecy = random.choice(prophecies)
     return random_prophecy.prophecy_description
-    
 
     player_name = str(
         input("Enter the name of the player you wish to delete: "))
@@ -175,7 +171,6 @@ def get_random_prophecy():
         print(f"Player {player.player_name} deleted successfully.")
     except Players.DoesNotExist:
         print("Player not found.")
-
 
 
 def initialize_database():
@@ -236,7 +231,6 @@ def initialize_database():
 
             with database.atomic():
                 Prophecy.insert_many(prophecy_data).execute()
-
 
         if Game_Over.select().count() == 0:
             game_over_data = [
