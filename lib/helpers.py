@@ -52,16 +52,6 @@ def print_somewhat_fast(output):
         # time.sleep(0)
     print()
     
-#def print_slowly_centered(output):
-   # lines = output.split('\n')
-   # for line in lines:
-      #  print_centered_slowly(line)
-
-#def print_centered_slowly(message):
-  #  terminal_width = 75  
- #   padding = " " * ((terminal_width - len(message)) // 2)
-   # print_slowly(padding + message)
-
 
 def print_table(headers, data):
     # Calculate the maximum width for each column based on the headers and data
@@ -101,7 +91,6 @@ def create_player():
         player, created = Players.get_or_create(
             player_name=name, defaults={'scene_id': 0})
         if created:
-
             success_message = f"{player.player_name} created successfully"
             print(success_message, end='', flush=True)
             time.sleep(2)
@@ -111,12 +100,6 @@ def create_player():
             print(f"Player {player.player_name} already exists.")
             time.sleep(2)
             print_centered("~🧿~Let's Begin!~🧿~")
-
-            print("----------------------------")
-            print_slowly(f"Success: {player.player_name} created successfully")
-            print("----------------------------")
-        
-
     except Exception as exc:
         print("Error creating player_name: ", exc)
         print()
