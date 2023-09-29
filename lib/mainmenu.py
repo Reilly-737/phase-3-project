@@ -4,8 +4,8 @@ from cli import *
 
 
 def main_menu():
-    print_somewhat_fast(game_title)
-    print_slowly(game_instructions)
+    # print_somewhat_fast(game_title)
+    # print_slowly(game_instructions)
     print("1. Enter Player")
     print("2. Quit")
 

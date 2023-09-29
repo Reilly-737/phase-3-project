@@ -37,19 +37,15 @@ def introduction():
 
     try:
         introchoice = int(input('>>> '))
-        handle_introduction(introchoice)
+        if introchoice == 1:
+            game_over()
+        elif introchoice == 2:
+            outside_the_party()
+        else:
+            print("Make a valid selection")
+            return
     except ValueError:
         print("Please enter a valid number (1 or 2).")
-
-
-def handle_introduction(introchoice):
-    if introchoice == 1:
-        game_over()
-    elif introchoice == 2:
-        outside_the_party()
-    else:
-        print("Make a valid selection")
-        return
 
 
 def outside_the_party():
@@ -72,19 +68,15 @@ def outside_the_party():
 
     try:
         outside_the_party_choice = int(input('>>> '))
-        handle_outside_the_party_choice(outside_the_party_choice)
+        if outside_the_party_choice == 1:
+            game_over()
+        elif outside_the_party_choice == 2:
+            following_the_cat()
+        else:
+            print("Make a valid selection")
+            return
     except ValueError:
         print("Please enter a valid number (1 or 2).")
-
-
-def handle_outside_the_party_choice(outside_the_party_choice):
-    if outside_the_party_choice == 1:
-        game_over()
-    elif outside_the_party_choice == 2:
-        following_the_cat()
-    else:
-        print("Make a valid selection")
-        return
 
 
 def following_the_cat():
@@ -104,19 +96,15 @@ def following_the_cat():
 
     try:
         following_the_cat_choice = int(input('>>> '))
-        handle_following_the_cat_choice(following_the_cat_choice)
+        if following_the_cat_choice == 1:
+            the_encounter()
+        elif following_the_cat_choice == 2:
+            game_over()
+        else:
+            print("Make a valid selection")
+            return
     except ValueError:
         print("Please enter a valid number (1 or 2).")
-
-
-def handle_following_the_cat_choice(following_the_cat_choice):
-    if following_the_cat_choice == 1:
-        the_encounter()
-    elif following_the_cat_choice == 2:
-        game_over()
-    else:
-        print("Make a valid selection")
-        return
 
 
 def the_encounter():
@@ -136,44 +124,57 @@ def the_encounter():
 
     try:
         the_encounter_choice = int(input('>>> '))
-        handle_the_encounter_choice(the_encounter_choice)
+        if the_encounter_choice == 1:
+            game_over()
+        elif the_encounter_choice == 2:
+            print_slowly("""As the moon wanes, so too must all things find their end.
+                        But from the ashes of mortality, the phoenix of rebirth shall rise,
+                        ushering in a new chapter of your eternal journey.""")
+            # when done, switch to function for the random prophecy
+        else:
+            print("Make a valid selection")
+            return
     except ValueError:
         print("Please enter a valid number (1 or 2).")
 
 
-def handle_the_encounter_choice(the_encounter_choice):
-    if the_encounter_choice == 1:
-        game_over()
-    elif the_encounter_choice == 2:
-        print_slowly("""As the moon wanes, so too must all things find their end.
-                     But from the ashes of mortality, the phoenix of rebirth shall rise,
-                     ushering in a new chapter of your eternal journey.""")
-        # when done, switch to function for the random prophecy
-    else:
-        print("Make a valid selection")
-        return
-
-
 def game_over():
-    print_slowly("Game Over...")
+
+    print_somewhat_fast("""
+  ▄████  ▄▄▄      ███▄ ▄███▓▓█████     ▒█████   ██▒   █▓▓█████  ██▀███  
+ ██▒ ▀█▒▒████▄   ▓██▒▀█▀ ██▒▓█   ▀    ▒██▒  ██▒▓██░   █▒▓█   ▀ ▓██ ▒ ██▒
+▒██░▄▄▄░▒██  ▀█▄ ▓██    ▓██░▒███      ▒██░  ██▒ ▓██  █▒░▒███   ▓██ ░▄█ ▒
+░▓█  ██▓░██▄▄▄▄██▒██    ▒██ ▒▓█  ▄    ▒██   ██░  ▒██ █░░▒▓█  ▄ ▒██▀▀█▄  
+░▒▓███▀▒ ▓█   ▓██▒██▒   ░██▒░▒████▒   ░ ████▓▒░   ▒▀█░  ░▒████▒░██▓ ▒██▒
+ ░▒   ▒  ▒▒   ▓▒█░ ▒░   ░  ░░░ ▒░ ░   ░ ▒░▒░▒░    ░ ▐░  ░░ ▒░ ░░ ▒▓ ░▒▓░
+  ░   ░   ▒   ▒▒ ░  ░      ░ ░ ░  ░     ░ ▒ ▒░    ░ ░░   ░ ░  ░  ░▒ ░ ▒░
+░ ░   ░   ░   ▒  ░      ░      ░      ░ ░ ░ ▒       ░░     ░     ░░   ░ 
+      ░       ░  ░      ░      ░  ░       ░ ░        ░     ░  ░   ░     
+                                                    ░                   
+
+                        
+                        
+                        """)
+
     print("Type 0 to return to the main menu.")
     print("Type 1 to return to start a new game.")
     print("Type 2 to start from the previous scene.")
 
     try:
         game_over_choice = int(input('>>> '))
-        handle_game_over_choice(game_over_choice)
+
+        if game_over_choice == 0:
+            from mainmenu import main_menu
+            main_menu()
+        elif game_over_choice == 1:
+            print_slowly("""
+            Starting a new game
+                         """)
+            introduction()
+        elif game_over_choice == 2:
+            pass
+        else:
+            main_menu()
+
     except ValueError:
         print("Please enter a valid number (0, 1, or 2).")
-
-
-def handle_game_over_choice(game_over_choice):
-    if game_over_choice == 0:
-        pass  # function to return to main menu
-    elif game_over_choice == 1:
-        introduction()
-    elif game_over_choice == 2:
-        pass  # function to start from previous scene based on player_scene_id
-    else:
-        print("Make a valid selection")
-        return
