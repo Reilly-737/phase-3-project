@@ -99,8 +99,8 @@ def create_player():
         player, created = Players.get_or_create(
             player_name=name, defaults={'scene_id': 0})
         if created:
-
             success_message = f"{player.player_name} created successfully"
+            print()
             print(success_message, end='', flush=True)
             time.sleep(1)
             print("\r" + " " * len(success_message) + "\r", end='', flush=True)
@@ -108,11 +108,12 @@ def create_player():
         else:
             print(f"Player {player.player_name} already exists.")
             time.sleep(1)
+            welcome_message = f"Welcome back, {player.player_name}."
+            print()
+            print(welcome_message, end='', flush=True)
+            time.sleep(2)
+            print("\r" + " " * len(welcome_message) + "\r", end='', flush=True)
             print_centered("~🧿~Let's Begin!~🧿~")
-
-            print("----------------------------")
-            print_slowly(f"Success: {player.player_name} created successfully")
-            print("----------------------------")
 
     except Exception as exc:
         print("Error creating player_name: ", exc)
@@ -151,7 +152,8 @@ def delete_player():
     try:
         player = Players.get(Players.player_name == player_name)
         player.delete_instance()
-        print(f"Player {player.player_name} deleted successfully.")
+        print_slowly(f"{player.player_name} has been deleted.")
+        print()
     except Players.DoesNotExist:
         print("Player not found.")
 
@@ -224,7 +226,7 @@ def initialize_database():
                 {'scene_id': 1, 'next_scene_id': 2, 'option_description':
                     'Curiosity gets the better of you, and you decide to follow the cat behind the shed'},
                 {'scene_id': 2, 'next_scene_id': 3,
-                    'option_description': 'You are too stunned to move. Press 1 to continue.'},
+                    'option_description': 'You are too stunned to move. Enter "1" to continue.'},
                 {'scene_id': 3, 'next_scene_id': 4,
                     'option_description': 'Attempt to run from the ooze'},
                 {'scene_id': 3, 'next_scene_id': 4,

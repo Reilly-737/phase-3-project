@@ -8,34 +8,35 @@ def main_menu():
     print_somewhat_fast(game_title)
     print_slowly(game_instructions)
 
-    print()
-    print("1. Enter Player")
-    print("2. Quit")
-    print()
-
     while True:
         print("""
 
 
 
-            ----------------------------
-            1. Enter Player Name
-            ----------------------------
-            2. Delete Player Name
-            ----------------------------
-            3. Display All Player Names
-            ----------------------------
-            4. Edit Player Name
-            ----------------------------
-            5. Quit
-            ----------------------------
-            """)
+                                                    ----------------------------
+                                                    1. Enter Player Name
+                                                    ----------------------------
+                                                    2. Delete Player Name
+                                                    ----------------------------
+                                                    3. Display All Player Names
+                                                    ----------------------------
+                                                    4. Edit Player Name
+                                                    ----------------------------
+                                                    5. Quit
+                                                    ----------------------------
+                                                    """)
 
         print("""
 
 
             """)
+
         choice = input("Select an option: ")
+
+        input_message = "Select an option: "
+        print_slowly(input_message)
+        choice = input()
+
 
         print("""
 
@@ -61,7 +62,7 @@ def main_menu():
             break
         else:
             print("Please select a valid option.")
-        print_slowly("~🧿~Let's Begin!~🧿~")
+
 
 
 game_title = """
@@ -74,8 +75,8 @@ game_title = """
     ░     ▒ ░▒░ ░ ░ ░  ░     ░ ▒ ▒░ ░  ░      ░ ▒ ░░ ░░   ░ ▒░  ░ ▒ ▒░ ░░▒░ ░ ░ ░ ░▒  ░ ░    ░ ░  ░░ ░░   ░ ▒░  ░  ▒     ░ ▒ ▒░ ░░▒░ ░ ░ ░ ░░   ░ ▒░    ░     ░ ░  ░  ░▒ ░ ▒░
   ░       ░  ░░ ░   ░      ░ ░ ░ ▒  ░      ░    ▒ ░   ░   ░ ░ ░ ░ ░ ▒   ░░░ ░ ░ ░  ░  ░        ░      ░   ░ ░ ░        ░ ░ ░ ▒   ░░░ ░ ░    ░   ░ ░   ░         ░     ░░   ░
           ░  ░  ░   ░  ░       ░ ░         ░    ░           ░     ░ ░     ░           ░        ░  ░         ░ ░ ░          ░ ░     ░              ░             ░  ░   ░
-     
-     
+
+
                                                                                                                                                                                                 ░
 """
 
