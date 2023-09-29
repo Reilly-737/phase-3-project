@@ -30,9 +30,13 @@ def main_menu():
 
 
             """)
+
+        choice = input("Select an option: ")
+
         input_message = "Select an option: "
         print_slowly(input_message)
         choice = input()
+
 
         print("""
 
@@ -58,6 +62,7 @@ def main_menu():
             break
         else:
             print("Please select a valid option.")
+
 
 
 game_title = """
