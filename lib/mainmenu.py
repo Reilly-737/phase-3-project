@@ -5,15 +5,13 @@ import readline
 
 def main_menu():
 
-    print_somewhat_fast(game_title)
-    print_slowly(game_instructions)
+    # print_somewhat_fast(game_title)
+    # print_slowly(game_instructions)
 
     print()
     print("1. Enter Player")
     print("2. Quit")
     print()
-    
-
 
     while True:
         print("""
@@ -39,14 +37,10 @@ def main_menu():
             """)
         choice = input("Select an option: ")
 
-       
-        
-
         print("""
 
 
             """)
-
 
         if choice == '1':
             print()
@@ -68,6 +62,7 @@ def main_menu():
         else:
             print("Please select a valid option.")
         print_slowly("~🧿~Let's Begin!~🧿~")
+
 
 game_title = """
 ▄▄▄█████▓ ██░ ██ ▓█████     ▒█████   ███▄ ▄███▓ ██▓ ███▄    █  ▒█████   █    ██   ██████    ▓█████  ███▄    █  ▄████▄   ▒█████   █    ██  ███▄    █ ▄▄▄█████▓▓█████  ██▀███
