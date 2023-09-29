@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import ipdb
+#import ipdb
 from helpers import *
 from mainmenu import *
 from models.model_1 import *
@@ -90,16 +90,13 @@ def handle_outside_the_party_choice(outside_the_party_choice):
 def following_the_cat():
     scene_2_description = display_scene_description(2)
     option_5_description = display_option_description(5)
-    option_6_description = display_option_description(6)
+    #option_6_description = display_option_description(6)
     print_slowly(f"""
 
           {scene_2_description}
 
-          Option 1: {option_5_description}
-
-          Option 2: {option_6_description}
-
-          Which option do you choose? 1 or 2?
+          {option_5_description}
+          
           """)
 
     try:
@@ -112,8 +109,6 @@ def following_the_cat():
 def handle_following_the_cat_choice(following_the_cat_choice):
     if following_the_cat_choice == 1:
         the_encounter()
-    elif following_the_cat_choice == 2:
-        game_over()
     else:
         print("Make a valid selection")
         return
@@ -121,13 +116,13 @@ def handle_following_the_cat_choice(following_the_cat_choice):
 
 def the_encounter():
     scene_3_description = display_scene_description(3)
-    option_7_description = display_option_description(7)
+    option_6_description = display_option_description(6)
     option_8_description = display_option_description(8)
     print_slowly(f"""
 
           {scene_3_description}
 
-          Option 1: {option_7_description}
+          Option 1: {option_6_description}
 
           Option 2: {option_8_description}
 

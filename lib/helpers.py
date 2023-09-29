@@ -7,9 +7,6 @@ import random
 DATABASE_NAME = "lib/game.db"
 
 
-DATABASE_NAME = "lib/game.db"
-
-
 def print_slowly(output):
     for char in output:
         print(char, end='', flush=True)
@@ -105,10 +102,15 @@ def create_player():
             player_name=name, defaults={'scene_id': 0})
         if created:
             print(f"Success: {player.player_name} created successfully")
+            time.sleep(2)
+            print("~🧿~Let's Begin!~~~🧿")
         else:
             print(f"Player {player.player_name} already exists.")
+            time.sleep(2)
+            print("~🧿~Let's Begin!~~~🧿")
     except Exception as exc:
         print("Error creating player_name: ", exc)
+        print()
 
 
 def update_player():
@@ -151,7 +153,7 @@ def initialize_database():
                 {'scene_id': 3, 'scene_name': 'The Encounter', 'scene_description':
                     'The tone shifts from the jovial party atmosphere to an eerie, all-knowing aura. It speaks to you through telepathy, its voice echoing in your mind. Ooze (telepathically): "You have shown courage by following me here, mortal. I am a being of ancient knowledge and power. Tell me, what do you seek?" You can sense that this ooze knows more than it lets on. Your choices lie before you:'},
                 {'scene_id': 4, 'scene_name': 'THE END', 'scene_description':
-                    'Ooze (telepathically): "Very well, seeker of knowledge. Your fate is written on the canvas of time." The eye''s gaze intensifies, and before you can react, it knocks you out. When you wake up, you find yourself on the porch, a prophecy etched onto the inside of your arm, your mind forever marked by the encounter. (Prophecy) Game Over.'}
+                    'Ooze (telepathically): "Very well, seeker of knowledge. Your fate is written on the canvas of time." The eye''s gaze intensifies, and before you can react, it knocks you out. When you wake up, you find yourself on the porch, a prophecy etched onto the inside of your arm, your mind forever marked by the encounter.'}
             ]
 
             with database.atomic():
@@ -168,11 +170,9 @@ def initialize_database():
                 {'scene_id': 1, 'next_scene_id': 2, 'option_description':
                     'Curiosity gets the better of you, and you decide to follow the cat behind the shed'},
                 {'scene_id': 2, 'next_scene_id': 3,
-                    'option_description': 'Enter ">_>" to continue'},
-                {'scene_id': 3, 'next_scene_id': 3,
+                    'option_description': 'You are too stunned to move. Press 1 to continue.'},
+                {'scene_id': 3, 'next_scene_id': 4,
                     'option_description': 'Attempt to run from the ooze'},
-                {'scene_id': 3, 'next_scene_id': 3,
-                    'option_description': 'Share something unrelated'},
                 {'scene_id': 3, 'next_scene_id': 4,
                     'option_description': 'Express your desire for a prophecy'}
             ]
@@ -196,4 +196,8 @@ def initialize_database():
 
             with database.atomic():
                 Prophecy.insert_many(prophecy_data).execute()
+#ef get_random_prophecy():
+    #prophecies = Prophecy.select()
+    #if prophecies.count() == 0:
+     #   return "The Ooze has spared you of prophecy. Enjoy"
 # ipdb.set_trace()
