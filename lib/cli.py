@@ -115,40 +115,27 @@ def the_encounter():
     try:
         the_encounter_choice = int(input('>>> '))
         if the_encounter_choice == 1:
-            game_over(4)
+            game_over()
         elif the_encounter_choice == 2:
-            print_slowly("""As the moon wanes, so too must all things find their end.
-                        But from the ashes of mortality, the phoenix of rebirth shall rise,
-                        ushering in a new chapter of your eternal journey.""")
-            # when done, switch to function for the random prophecy
-        else:
-            print("Make a valid selection")
-            return
-    except ValueError:
-        print("Please enter a valid number (1 or 2).")
-
-
-def handle_the_encounter_choice(the_encounter_choice):
-    if the_encounter_choice == 1:
-        game_over()
-    elif the_encounter_choice == 2:
-        print()
-        game_over_message = """
+            print()
+            game_over_message = """
             Ooze (telepathically):
             Very well, seeker of knowledge. Your fate is written on the canvas of time.
             The eye's gaze intensifies, and before you can react, it knocks you out.
             When you wake up, you find yourself on the porch, a prophecy etched onto the inside of your arm,
             your mind forever marked by the encounter."""
-        print()
-        random_prophecy = get_random_prophecy()
+            print()
+            random_prophecy = get_random_prophecy()
 
-        print_somewhat_fast(game_over_message)
-        print()
-        print_slowly(random_prophecy)
-        print()
-    else:
-        print("Make a valid selection or death and destruction await you.")
-        return
+            print_somewhat_fast(game_over_message)
+            print()
+            print_slowly(random_prophecy)
+            print()
+        else:
+            print("Make a valid selection or death and destruction await you.")
+            return
+    except ValueError:
+            print("Please enter a valid number (1 or 2).")  
 
 
 def game_over(game_over_id):

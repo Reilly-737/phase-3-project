@@ -115,10 +115,7 @@ def create_player():
             print("----------------------------")
             print_slowly(f"Success: {player.player_name} created successfully")
             print("----------------------------")
-        else:
-            print("----------------------------")
-            print_slowly(f"Player {player.player_name} already exists.")
-            print("----------------------------")
+        
 
     except Exception as exc:
         print("Error creating player_name: ", exc)
@@ -157,15 +154,7 @@ def delete_player():
         print(f'Player {id_} deleted')
     else:
         print(f'Player {id_} not found')
-        
-def get_random_prophecy():
-    prophecies = Prophecy.select()
-    if prophecies.count() == 0:
-            return "The Ooze has spared you of prophecy. Enjoy the lie of free will."
-    random_prophecy = random.choice(prophecies)
-    return random_prophecy.prophecy_description
     
-
     player_name = str(
         input("Enter the name of the player you wish to delete: "))
 
@@ -175,6 +164,13 @@ def get_random_prophecy():
         print(f"Player {player.player_name} deleted successfully.")
     except Players.DoesNotExist:
         print("Player not found.")
+        
+def get_random_prophecy():
+    prophecies = Prophecy.select()
+    if prophecies.count() == 0:
+            return "The Ooze has spared you of prophecy. Enjoy the lie of free will."
+    random_prophecy = random.choice(prophecies)
+    return random_prophecy.prophecy_description      
 
 
 
