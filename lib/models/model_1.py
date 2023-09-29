@@ -33,7 +33,12 @@ class Options(BaseModel):
 
 class Prophecy(BaseModel):
     prophecy_id = AutoField(primary_key=True)
-    prophecy_name = CharField(null=True)
-    prophecy_description = TextField(null=True)
+    prophecy_name = CharField(null=False)
+    prophecy_description = TextField(null=False)
 
-# Connect the models to the database
+
+class Game_Over(BaseModel):
+    game_over_id = AutoField(primary_key=True)
+    game_over_name = TextField(null=False)
+    game_over_description = TextField(null=False)
+    # scene_id = ForeignKeyField(Scenes, backref='options')
