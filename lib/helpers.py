@@ -5,9 +5,11 @@ import time
 import random
 
 
+
 def game_over_description(game_over_id):
     end_message = Game_Over.get(Game_Over.game_over_id == game_over_id)
     return (end_message.game_over_description)
+
 
 
 def display_scene_description(scene_id):
@@ -49,6 +51,16 @@ def print_somewhat_fast(output):
         time.sleep(0.002)
         # time.sleep(0)
     print()
+    
+#def print_slowly_centered(output):
+   # lines = output.split('\n')
+   # for line in lines:
+      #  print_centered_slowly(line)
+
+#def print_centered_slowly(message):
+  #  terminal_width = 75  
+ #   padding = " " * ((terminal_width - len(message)) // 2)
+   # print_slowly(padding + message)
 
 
 def print_table(headers, data):
@@ -89,6 +101,17 @@ def create_player():
         player, created = Players.get_or_create(
             player_name=name, defaults={'scene_id': 0})
         if created:
+
+            success_message = f"{player.player_name} created successfully"
+            print(success_message, end='', flush=True)
+            time.sleep(2)
+            print("\r" + " " * len(success_message) + "\r", end='', flush=True)
+            print_centered("~🧿~Let's Begin!~🧿~")
+        else:
+            print(f"Player {player.player_name} already exists.")
+            time.sleep(2)
+            print_centered("~🧿~Let's Begin!~🧿~")
+
             print("----------------------------")
             print_slowly(f"Success: {player.player_name} created successfully")
             print("----------------------------")
@@ -96,9 +119,20 @@ def create_player():
             print("----------------------------")
             print_slowly(f"Player {player.player_name} already exists.")
             print("----------------------------")
+
     except Exception as exc:
         print("Error creating player_name: ", exc)
-
+        print()
+        
+def print_centered(message):
+    terminal_width = 75  
+    padding = " " * ((terminal_width - len(message)) // 2)
+    print(padding + message)
+        
+def remove_message(delay):
+    time.sleep(delay)
+    print("\033[A\033[K", end="")
+    
 
 def change_player_name():
     try:
@@ -116,6 +150,22 @@ def change_player_name():
 
 
 def delete_player():
+
+    id_ = input("Enter the player's id: ")
+    if player := Players.find_by_id(id_):
+        player.delete()
+        print(f'Player {id_} deleted')
+    else:
+        print(f'Player {id_} not found')
+        
+def get_random_prophecy():
+    prophecies = Prophecy.select()
+    if prophecies.count() == 0:
+            return "The Ooze has spared you of prophecy. Enjoy the lie of free will."
+    random_prophecy = random.choice(prophecies)
+    return random_prophecy.prophecy_description
+    
+
     player_name = str(
         input("Enter the name of the player you wish to delete: "))
 
@@ -125,6 +175,7 @@ def delete_player():
         print(f"Player {player.player_name} deleted successfully.")
     except Players.DoesNotExist:
         print("Player not found.")
+
 
 
 def initialize_database():
@@ -138,11 +189,11 @@ def initialize_database():
                     'You find yourself amidst a vibrant party with your friends, the music pulsating through the air as laughter fills the room. You''re faced with a choice:'},
                 {'scene_id': 1, 'scene_name': 'Outside the Party', 'scene_description':
                     'As you exhale a puff of vapor, you notice a black cat with striking green eyes in the yard, peacefully minding its own business. Your options beckon:'},
-                {'scene_id': 2, 'scene_name': 'Following the Cat', 'scene_description': 'You stealthily follow the mysterious feline behind the shed, only to find that it has vanished without a trace. Instead, you encounter something utterly unexpected—a colossal pile of black ooze. It ripples and shifts, and from the center emerges a massive bright blue eye, akin to the evil eye shade of blue with a black center. The eye locks onto you; its presence unnerving.'},
+                {'scene_id': 2, 'scene_name': 'Following the Cat', 'scene_description': 'You stealthily follow the mysterious feline behind the shed, only to find that it has vanished without a trace. Instead, you encounter something utterly unexpected—a colossal pile of black ooze. It ripples and shifts, and from the center emerges a massive bright blue eye, its presence unnerving.'},
                 {'scene_id': 3, 'scene_name': 'The Encounter', 'scene_description':
                     'The tone shifts from the jovial party atmosphere to an eerie, all-knowing aura. It speaks to you through telepathy, its voice echoing in your mind. Ooze (telepathically): "You have shown courage by following me here, mortal. I am a being of ancient knowledge and power. Tell me, what do you seek?" You can sense that this ooze knows more than it lets on. Your choices lie before you:'},
                 {'scene_id': 4, 'scene_name': 'THE END', 'scene_description':
-                    'Ooze (telepathically): "Very well, seeker of knowledge. Your fate is written on the canvas of time." The eye''s gaze intensifies, and before you can react, it knocks you out. When you wake up, you find yourself on the porch, a prophecy etched onto the inside of your arm, your mind forever marked by the encounter. (Prophecy) Game Over.'}
+                    'Ooze (telepathically): "Very well, seeker of knowledge. Your fate is written on the canvas of time." The eye''s gaze intensifies, and before you can react, it knocks you out. When you wake up, you find yourself on the porch, a prophecy etched onto the inside of your arm, your mind forever marked by the encounter.'}
             ]
 
             with database.atomic():
@@ -155,15 +206,13 @@ def initialize_database():
                 {'scene_id': 0, 'next_scene_id': 1, 'option_description':
                     'Opt for a more mellow approach, sipping on lemonade as you enjoy the company of your friends'},
                 {'scene_id': 1, 'next_scene_id': 1, 'option_description':
-                    'Continue vaping and head back inside, rejoining the festivities. Game over.'},
+                    'Continue vaping and head back inside, rejoining the festivities.'},
                 {'scene_id': 1, 'next_scene_id': 2, 'option_description':
                     'Curiosity gets the better of you, and you decide to follow the cat behind the shed'},
                 {'scene_id': 2, 'next_scene_id': 3,
-                    'option_description': 'Enter ">_>" to continue'},
-                {'scene_id': 3, 'next_scene_id': 3,
+                    'option_description': 'You are too stunned to move. Press 1 to continue.'},
+                {'scene_id': 3, 'next_scene_id': 4,
                     'option_description': 'Attempt to run from the ooze'},
-                {'scene_id': 3, 'next_scene_id': 3,
-                    'option_description': 'Share something unrelated'},
                 {'scene_id': 3, 'next_scene_id': 4,
                     'option_description': 'Express your desire for a prophecy'}
             ]
@@ -188,6 +237,7 @@ def initialize_database():
             with database.atomic():
                 Prophecy.insert_many(prophecy_data).execute()
 
+
         if Game_Over.select().count() == 0:
             game_over_data = [
                 {'game_over_id': 1, 'game_over_name': 'More Shots', 'game_over_description':
@@ -204,4 +254,5 @@ def initialize_database():
 
             with database.atomic():
                 Game_Over.insert_many(game_over_data).execute()
+
 # ipdb.set_trace()

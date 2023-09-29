@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
-import ipdb
+#import ipdb
 from helpers import *
 from mainmenu import *
 from models.model_1 import *
+
 
 if __name__ == "__main__":
     initialize_database()
@@ -23,7 +24,9 @@ def introduction():
           Option 2: {option_2_description}
 
           Which option do you choose? 1 or 2?
+          
           """)
+    #print_slowly_centered(introduction)
 
     try:
         introchoice = int(input('>>> '))
@@ -55,6 +58,7 @@ def outside_the_party():
 
           Which option do you choose? 1 or 2?
           """)
+   # print_slowly_centered(introduction)
 
     try:
         outside_the_party_choice = int(input('>>> '))
@@ -73,42 +77,37 @@ def outside_the_party():
 def following_the_cat():
     scene_2_description = display_scene_description(2)
     option_5_description = display_option_description(5)
-    option_6_description = display_option_description(6)
     print_slowly(f"""
 
           {scene_2_description}
 
-          Option 1: {option_5_description}
-
-          Option 2: {option_6_description}
-
-          Which option do you choose? 1 or 2?
+          {option_5_description}
+          
           """)
 
     try:
         following_the_cat_choice = int(input('>>> '))
         if following_the_cat_choice == 1:
-            the_encounter()
-        elif following_the_cat_choice == 2:
-            game_over(3)
-        else:
-            print("Make a valid selection")
-            return
+        the_encounter()
+    else:
+        print("Make a valid selection")
+        return
+       
     except ValueError:
         print("Please enter a valid number (1 or 2).")
 
-
+        
 def the_encounter():
     scene_3_description = display_scene_description(3)
+    option_6_description = display_option_description(6)
     option_7_description = display_option_description(7)
-    option_8_description = display_option_description(8)
     print_slowly(f"""
 
           {scene_3_description}
 
-          Option 1: {option_7_description}
+          Option 1: {option_6_description}
 
-          Option 2: {option_8_description}
+          Option 2: {option_7_description}
 
           Which option do you choose? 1 or 2?
           """)
@@ -128,6 +127,29 @@ def the_encounter():
     except ValueError:
         print("Please enter a valid number (1 or 2).")
 
+
+
+def handle_the_encounter_choice(the_encounter_choice):
+    if the_encounter_choice == 1:
+        game_over()
+    elif the_encounter_choice == 2:
+        print()
+        game_over_message = """
+            Ooze (telepathically): 
+            Very well, seeker of knowledge. Your fate is written on the canvas of time.
+            The eye's gaze intensifies, and before you can react, it knocks you out. 
+            When you wake up, you find yourself on the porch, a prophecy etched onto the inside of your arm,
+            your mind forever marked by the encounter."""
+        print()
+        random_prophecy = get_random_prophecy()
+        
+        print_somewhat_fast(game_over_message)
+        print()
+        print_slowly(random_prophecy)
+        print()
+    else:
+        print("Make a valid selection or death and destruction await you.")
+        return
 
 def game_over(game_over_id):
 

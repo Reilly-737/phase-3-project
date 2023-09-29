@@ -8,6 +8,13 @@ def main_menu():
     print_somewhat_fast(game_title)
     print_slowly(game_instructions)
 
+    print()
+    print("1. Enter Player")
+    print("2. Quit")
+    print()
+    
+
+
     while True:
         print("""
 
@@ -31,10 +38,15 @@ def main_menu():
 
             """)
         choice = input("Select an option: ")
+
+       
+        
+
         print("""
 
 
             """)
+
 
         if choice == '1':
             print()
@@ -55,7 +67,7 @@ def main_menu():
             break
         else:
             print("Please select a valid option.")
-
+        print_slowly("~🧿~Let's Begin!~🧿~")
 
 game_title = """
 ▄▄▄█████▓ ██░ ██ ▓█████     ▒█████   ███▄ ▄███▓ ██▓ ███▄    █  ▒█████   █    ██   ██████    ▓█████  ███▄    █  ▄████▄   ▒█████   █    ██  ███▄    █ ▄▄▄█████▓▓█████  ██▀███
@@ -67,15 +79,19 @@ game_title = """
     ░     ▒ ░▒░ ░ ░ ░  ░     ░ ▒ ▒░ ░  ░      ░ ▒ ░░ ░░   ░ ▒░  ░ ▒ ▒░ ░░▒░ ░ ░ ░ ░▒  ░ ░    ░ ░  ░░ ░░   ░ ▒░  ░  ▒     ░ ▒ ▒░ ░░▒░ ░ ░ ░ ░░   ░ ▒░    ░     ░ ░  ░  ░▒ ░ ▒░
   ░       ░  ░░ ░   ░      ░ ░ ░ ▒  ░      ░    ▒ ░   ░   ░ ░ ░ ░ ░ ▒   ░░░ ░ ░ ░  ░  ░        ░      ░   ░ ░ ░        ░ ░ ░ ▒   ░░░ ░ ░    ░   ░ ░   ░         ░     ░░   ░
           ░  ░  ░   ░  ░       ░ ░         ░    ░           ░     ░ ░     ░           ░        ░  ░         ░ ░ ░          ░ ░     ░              ░             ░  ░   ░
-                                                                                                              ░
+     
+     
+                                                                                                                                                                                                ░
 """
 
 game_instructions = """
-Welcome!
-Instructions
-Select "Enter Player" to start or continue your adventure.
-If you have a recorded name, you can choose to start a new game
-or continue your current game.
-Follow the story's choices carefully and make decisions to uncover your fate.
-Enjoy the experience and see where your choices lead you. Good luck!
+                            Welcome!
+
+                        ~~Instructions~~
+
+    *Select "Enter Player" to start or continue your adventure.
+
+    *Follow the story's choices carefully and make decisions to uncover your fate.
+
+    *Enjoy the experience and see where your choices lead you. Good luck!
 """
