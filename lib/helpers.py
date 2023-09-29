@@ -102,12 +102,12 @@ def create_player():
 
             success_message = f"{player.player_name} created successfully"
             print(success_message, end='', flush=True)
-            time.sleep(2)
+            time.sleep(1)
             print("\r" + " " * len(success_message) + "\r", end='', flush=True)
             print_centered("~🧿~Let's Begin!~🧿~")
         else:
             print(f"Player {player.player_name} already exists.")
-            time.sleep(2)
+            time.sleep(1)
             print_centered("~🧿~Let's Begin!~🧿~")
 
             print("----------------------------")
