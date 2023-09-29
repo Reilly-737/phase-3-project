@@ -1,55 +1,73 @@
-# import ipdb
 from helpers import *
 from cli import *
+import readline
 
 
 def main_menu():
+
     print_somewhat_fast(game_title)
     print_slowly(game_instructions)
+
     print()
     print("1. Enter Player")
     print("2. Quit")
     print()
     
 
+
     while True:
+        print("""
+
+
+
+            ----------------------------
+            1. Enter Player Name
+            ----------------------------
+            2. Delete Player Name
+            ----------------------------
+            3. Display All Player Names
+            ----------------------------
+            4. Edit Player Name
+            ----------------------------
+            5. Quit
+            ----------------------------
+            """)
+
+        print("""
+
+
+            """)
         choice = input("Select an option: ")
-        print()
+
+       
         
+
+        print("""
+
+
+            """)
+
+
         if choice == '1':
+            print()
             create_player()
             introduction()
         elif choice == '2':
+            print()
+            delete_player()
+        elif choice == '3':
+            print()
+            list_players()
+        elif choice == '4':
+            print()
+            change_player_name()
+        elif choice == '5':
+            print()
             print("Goodbye!")
             break
         else:
             print("Please select a valid option.")
         print_slowly("~🧿~Let's Begin!~🧿~")
-
-# def enter_player():
-#     player_name = input("Enter player name: ")
-#     print(f"Welcome, {player_name}!")
-
-#     while True:
-#         choice = input(
-#             "Start a new game (new). Continue current game(con). Delete current game(del). Exit(exit).")
-
-#         if choice == "new":
-#             helpers.start_new_game(player_name)
-#             introduction()
-#             break
-#         elif choice == "con":
-#             helpers.continue_game(player_name)
-#             break
-#         elif choice == "del":
-#             helpers.delete_game_data(player_name)
-#             break
-#         elif choice == "exit":
-#             helpers.exit_program(player_name)
-#             break
-#         else:
-#             print("Whoops! Invalid choice. Please Select a valid option.")
-
 
 game_title = """
 ▄▄▄█████▓ ██░ ██ ▓█████     ▒█████   ███▄ ▄███▓ ██▓ ███▄    █  ▒█████   █    ██   ██████    ▓█████  ███▄    █  ▄████▄   ▒█████   █    ██  ███▄    █ ▄▄▄█████▓▓█████  ██▀███
