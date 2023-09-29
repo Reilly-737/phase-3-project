@@ -9,7 +9,8 @@ def main_menu():
     print("1. Enter Player Name")
     print("2. Delete Player Name")
     print("3. Display All Player Names")
-    print("4. Quit")
+    print("4. Edit Player Name")
+    print("5. Quit")
 
     while True:
         choice = input("Select an option: ")
@@ -22,6 +23,8 @@ def main_menu():
         elif choice == '3':
             list_players()
         elif choice == '4':
+            change_player_name()
+        elif choice == '5':
             print("Goodbye!")
             break
         else:

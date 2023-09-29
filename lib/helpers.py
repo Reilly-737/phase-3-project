@@ -61,21 +61,19 @@ def create_player():
         print("Error creating player_name: ", exc)
 
 
-def update_player():
-    id_ = input("Enter the player's id: ")
-    if player := Players.find_by_id(id_):
-        try:
-            name = input("Enter the players new name: ")
-            player.player_name = name
-            scene = input("Enter the player's current scene: ")
-            player.scene_id = scene
+def change_player_name():
+    try:
+        player_name = input("Enter the name you wish to edit: ")
+        new_name = input(f"What would you like to change {player_name} to? ")
+        player = Players.get(Players.player_name == player_name)
+        player.player_name = new_name
+        player.save()
 
-            player.update()
-            print(f'Success: {player}')
-        except Exception as exc:
-            print("Error updating player: ", exc)
-    else:
-        print(f'Player {id_} not found')
+        print(f"Player name updated. Your name is now {new_name}")
+    except Players.DoesNotExist:
+        print(f"Player with '{player_name}' not found")
+    except Exception as exc:
+        print("Error updating player: ", exc)
 
 
 def delete_player():
