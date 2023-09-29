@@ -28,7 +28,7 @@ def introduction():
     try:
         introchoice = int(input('>>> '))
         if introchoice == 1:
-            game_over()
+            game_over(1)
         elif introchoice == 2:
             outside_the_party()
         else:
@@ -59,7 +59,8 @@ def outside_the_party():
     try:
         outside_the_party_choice = int(input('>>> '))
         if outside_the_party_choice == 1:
-            game_over()
+            game_over_id = 2
+            game_over(game_over_id)
         elif outside_the_party_choice == 2:
             following_the_cat()
         else:
@@ -89,7 +90,7 @@ def following_the_cat():
         if following_the_cat_choice == 1:
             the_encounter()
         elif following_the_cat_choice == 2:
-            game_over()
+            game_over(3)
         else:
             print("Make a valid selection")
             return
@@ -115,7 +116,7 @@ def the_encounter():
     try:
         the_encounter_choice = int(input('>>> '))
         if the_encounter_choice == 1:
-            game_over()
+            game_over(4)
         elif the_encounter_choice == 2:
             print_slowly("""As the moon wanes, so too must all things find their end.
                         But from the ashes of mortality, the phoenix of rebirth shall rise,
@@ -128,7 +129,9 @@ def the_encounter():
         print("Please enter a valid number (1 or 2).")
 
 
-def game_over():
+def game_over(game_over_id):
+
+    print_slowly(game_over_description(game_over_id))
 
     print_somewhat_fast("""
   ▄████  ▄▄▄      ███▄ ▄███▓▓█████     ▒█████   ██▒   █▓▓█████  ██▀███

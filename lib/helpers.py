@@ -10,6 +10,26 @@ DATABASE_NAME = "lib/game.db"
 DATABASE_NAME = "lib/game.db"
 
 
+def game_over_description(game_over_id):
+    end_message = Game_Over.get(Game_Over.game_over_id == game_over_id)
+    return (end_message.game_over_description)
+
+
+# def game_over_id(game_over_id):
+#     game_over = Game_Over.get(Game_Over.game_over_id == game_over_id)
+#     return (game_over.game_over_id)
+
+
+def display_scene_description(scene_id):
+    scene = Scenes.get(Scenes.scene_id == scene_id)
+    return (scene.scene_description)
+
+
+def display_option_description(option_id):
+    option = Options.get(Options.option_id == option_id)
+    return (option.option_description)
+
+
 def print_slowly(output):
     for char in output:
         print(char, end='', flush=True)
@@ -139,7 +159,8 @@ def delete_player():
 
 def initialize_database():
     with database:
-        database.create_tables([Players, Scenes, Options, Prophecy], safe=True)
+        database.create_tables(
+            [Players, Scenes, Options, Prophecy, Game_Over], safe=True)
 
         if Scenes.select().count() == 0:
             scenes_data = [
@@ -196,4 +217,21 @@ def initialize_database():
 
             with database.atomic():
                 Prophecy.insert_many(prophecy_data).execute()
+
+        if Game_Over.select().count() == 0:
+            game_over_data = [
+                {'game_over_id': 1, 'game_over_name': 'More Shots', 'game_over_description':
+                    'You choose to have more shots with your friends, and the night spirals into a blur of fun and laughter. However, as the night progresses, so does the intoxication. You’ve gone too far and have to taxi home before midnight. Game over.'},
+                {'game_over_id': 2, 'game_over_name': 'Go Back Inside',
+                    'game_over_description': 'You continue vaping and head back inside, rejoining the festivities.'},
+                {'game_over_id': 3, 'game_over_name': 'Attempt to Run', 'game_over_description':
+                    'You make a frantic attempt to escape, but the ooze moves with incredible speed, enveloping you and absorbing you into its collective consciousness for all eternity.'},
+                {'game_over_id': 4, 'game_over_name': 'Share Something Unrelated', 'game_over_description':
+                    'You respond with unrelated thoughts, but the ooze finds your answers unsatisfactory. With a powerful surge, it knocks you unconscious. You awaken the next morning, cold and alone.'},
+                {'game_over_id': 5, 'game_over_name': 'Game End Message', 'game_over_description':
+                    'In the dark recesses of your choices, the game concludes. Yet in the shadows, infinite narratives linger. Restart, and let the eerie echoes of your decisions haunt your next journey.'}
+            ]
+
+            with database.atomic():
+                Game_Over.insert_many(game_over_data).execute()
 # ipdb.set_trace()
