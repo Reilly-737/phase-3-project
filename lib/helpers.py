@@ -99,7 +99,6 @@ def create_player():
         player, created = Players.get_or_create(
             player_name=name, defaults={'scene_id': 0})
         if created:
-
             success_message = f"{player.player_name} created successfully"
             print(success_message, end='', flush=True)
             time.sleep(2)
