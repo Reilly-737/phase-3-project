@@ -30,7 +30,9 @@ def main_menu():
 
 
             """)
-        choice = input("Select an option: ")
+        input_message = "Select an option: "
+        print_slowly(input_message)
+        choice = input()
 
         print("""
 
