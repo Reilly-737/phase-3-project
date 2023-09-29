@@ -10,11 +10,6 @@ def game_over_description(game_over_id):
     return (end_message.game_over_description)
 
 
-# def game_over_id(game_over_id):
-#     game_over = Game_Over.get(Game_Over.game_over_id == game_over_id)
-#     return (game_over.game_over_id)
-
-
 def display_scene_description(scene_id):
     scene = Scenes.get(Scenes.scene_id == scene_id)
     return (scene.scene_description)
