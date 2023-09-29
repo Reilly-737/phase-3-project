@@ -5,6 +5,7 @@ from helpers import *
 from mainmenu import *
 from models.model_1 import *
 
+
 if __name__ == "__main__":
     initialize_database()
     main_menu()
@@ -21,6 +22,8 @@ def display_option_description(option_id):
     return (option.option_description)
 
 
+
+
 def introduction():
     scene_0_description = display_scene_description(0)
     option_1_description = display_option_description(1)
@@ -33,7 +36,9 @@ def introduction():
           Option 2: {option_2_description}
 
           Which option do you choose? 1 or 2?
+          
           """)
+    #print_slowly_centered(introduction)
 
     try:
         introchoice = int(input('>>> '))
@@ -69,6 +74,7 @@ def outside_the_party():
 
           Which option do you choose? 1 or 2?
           """)
+   # print_slowly_centered(introduction)
 
     try:
         outside_the_party_choice = int(input('>>> '))
@@ -90,7 +96,6 @@ def handle_outside_the_party_choice(outside_the_party_choice):
 def following_the_cat():
     scene_2_description = display_scene_description(2)
     option_5_description = display_option_description(5)
-    #option_6_description = display_option_description(6)
     print_slowly(f"""
 
           {scene_2_description}
@@ -117,14 +122,14 @@ def handle_following_the_cat_choice(following_the_cat_choice):
 def the_encounter():
     scene_3_description = display_scene_description(3)
     option_6_description = display_option_description(6)
-    option_8_description = display_option_description(8)
+    option_7_description = display_option_description(7)
     print_slowly(f"""
 
           {scene_3_description}
 
           Option 1: {option_6_description}
 
-          Option 2: {option_8_description}
+          Option 2: {option_7_description}
 
           Which option do you choose? 1 or 2?
           """)
@@ -140,12 +145,22 @@ def handle_the_encounter_choice(the_encounter_choice):
     if the_encounter_choice == 1:
         game_over()
     elif the_encounter_choice == 2:
-        print_slowly("""As the moon wanes, so too must all things find their end.
-                     But from the ashes of mortality, the phoenix of rebirth shall rise,
-                     ushering in a new chapter of your eternal journey.""")
-        # when done, switch to function for the random prophecy
+        print()
+        game_over_message = """
+            Ooze (telepathically): 
+            Very well, seeker of knowledge. Your fate is written on the canvas of time.
+            The eye's gaze intensifies, and before you can react, it knocks you out. 
+            When you wake up, you find yourself on the porch, a prophecy etched onto the inside of your arm,
+            your mind forever marked by the encounter."""
+        print()
+        random_prophecy = get_random_prophecy()
+        
+        print_somewhat_fast(game_over_message)
+        print()
+        print_slowly(random_prophecy)
+        print()
     else:
-        print("Make a valid selection")
+        print("Make a valid selection or death and destruction await you.")
         return
 
 
