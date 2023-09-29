@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
-# import ipdb
-from helpers import *
-from mainmenu import *
+import ipdb
+
 from models.model_1 import *
+from mainmenu import *
+from helpers import *
 
 
 if __name__ == "__main__":
@@ -88,6 +89,9 @@ def following_the_cat():
     try:
         following_the_cat_choice = int(input('>>> '))
         if following_the_cat_choice == 1:
+            new_scene_id = 3
+            ipdb.set_trace()
+            update_player_scene(get_current_player(), new_scene_id)
             the_encounter()
         else:
             print("Make a valid selection")
@@ -114,7 +118,8 @@ def the_encounter():
     try:
         the_encounter_choice = int(input('>>> '))
         if the_encounter_choice == 1:
-            game_over()
+            game_over_id = 3
+            game_over(game_over_id)
         elif the_encounter_choice == 2:
             print()
             game_over_message = """
@@ -165,6 +170,8 @@ def game_over(game_over_id):
 
         if game_over_choice == 0:
             from mainmenu import main_menu
+            set_current_player(None)
+
             main_menu()
         elif game_over_choice == 1:
             print_slowly("""

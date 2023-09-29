@@ -1,8 +1,19 @@
 # lib/helpers.py
 from models.model_1 import *
-# import ipdb
+import ipdb
 import time
 import random
+
+current_player = None
+
+
+def get_current_player():
+    return current_player
+
+
+def set_current_player(player):
+    global current_player
+    current_player = player
 
 
 def game_over_description(game_over_id):
@@ -61,6 +72,10 @@ def print_somewhat_fast(output):
    # print_slowly(padding + message)
 
 
+def test():
+    ipdb.set_trace()
+
+
 def print_table(headers, data):
     # Calculate the maximum width for each column based on the headers and data
     column_widths = [max(len(str(item)) for item in col)
@@ -98,12 +113,14 @@ def create_player():
     try:
         player, created = Players.get_or_create(
             player_name=name, defaults={'scene_id': 0})
+        global current_player
         if created:
             success_message = f"{player.player_name} created successfully"
             print()
             print(success_message, end='', flush=True)
             time.sleep(2)
             print("\r" + " " * len(success_message) + "\r", end='', flush=True)
+            current_player = player
             print_centered("~🧿~Let's Begin!~🧿~")
         else:
             welcome_message = f"Welcome back, {player.player_name}."
@@ -111,6 +128,7 @@ def create_player():
             print(welcome_message, end='', flush=True)
             time.sleep(2)
             print("\r" + " " * len(welcome_message) + "\r", end='', flush=True)
+            current_player = player
             print_centered("~🧿~Let's Begin!~🧿~")
 
     except Exception as exc:
@@ -162,6 +180,16 @@ def get_random_prophecy():
         return "The Ooze has spared you of prophecy. Enjoy the lie of free will."
     random_prophecy = random.choice(prophecies)
     return random_prophecy.prophecy_description
+
+
+def update_player_scene(player_name, new_scene_id):
+    try:
+        player = Players.get(Players.player_name == player_name)
+        player.scene_id = new_scene_id
+        player.save()
+        print(f"{player_name}'s scene_id has been updated to {new_scene_id}")
+    except Players.DoesNotExist:
+        print(f"Player '{player_name}' does not exist in the database.")
 
 
 def initialize_database():
