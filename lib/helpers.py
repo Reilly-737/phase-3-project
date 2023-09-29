@@ -196,7 +196,7 @@ def initialize_database():
                 {'scene_id': 1, 'next_scene_id': 2, 'option_description':
                     'Curiosity gets the better of you, and you decide to follow the cat behind the shed'},
                 {'scene_id': 2, 'next_scene_id': 3,
-                    'option_description': 'You are too stunned to move. Press 1 to continue.'},
+                    'option_description': 'You are too stunned to move. Enter "1" to continue.'},
                 {'scene_id': 3, 'next_scene_id': 4,
                     'option_description': 'Attempt to run from the ooze'},
                 {'scene_id': 3, 'next_scene_id': 4,
