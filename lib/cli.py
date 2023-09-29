@@ -168,8 +168,8 @@ def game_over():
             main_menu()
         elif game_over_choice == 1:
             print_slowly("""
-            Starting a new game
-                         """)
+                  Starting a new game...
+                  """)
             introduction()
         elif game_over_choice == 2:
             pass
@@ -177,4 +177,4 @@ def game_over():
             main_menu()
 
     except ValueError:
-        print("Please enter a valid number (0, 1, or 2).")
+        print("Please enter a valid number (0, 1, or ")
