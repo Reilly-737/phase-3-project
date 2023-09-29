@@ -5,8 +5,8 @@ import readline
 
 def main_menu():
 
-    # print_somewhat_fast(game_title)
-    # print_slowly(game_instructions)
+    print_somewhat_fast(game_title)
+    print_slowly(game_instructions)
 
     print()
     print("1. Enter Player")
