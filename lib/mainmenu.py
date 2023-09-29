@@ -31,6 +31,7 @@ def main_menu():
 
 
             """)
+
         input_message = "Select an option: "
         print_slowly(input_message)
         choice = input()

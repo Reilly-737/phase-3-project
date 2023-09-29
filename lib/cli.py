@@ -20,14 +20,15 @@ def introduction():
     print_slowly(f"""
           {scene_0_description}
 
-          Option 1: {option_1_description}
+              Option 1: {option_1_description}
 
-          Option 2: {option_2_description}
+              Option 2: {option_2_description}
 
-          Which option do you choose? 1 or 2?
+            Which option do you choose? 1 or 2?
 
           """)
-    # print_slowly_centered(introduction)
+      
+   
 
     try:
         introchoice = int(input('>>> '))
@@ -47,17 +48,13 @@ def outside_the_party():
     option_3_description = display_option_description(3)
     option_4_description = display_option_description(4)
     print_slowly(f"""
-          You sip on lemonade, savoring the refreshing taste as you engage in
-          delightful conversations with your friends. At one point, you decide to
-          step outside for a quick vape break.
-
           {scene_1_description}
 
-          Option 1: {option_3_description}
+              Option 1: {option_3_description}
 
-          Option 2: {option_4_description}
+              Option 2: {option_4_description}
 
-          Which option do you choose? 1 or 2?
+            Which option do you choose? 1 or 2?
           """)
    # print_slowly_centered(introduction)
 
@@ -82,7 +79,7 @@ def following_the_cat():
 
           {scene_2_description}
 
-          {option_5_description}
+            {option_5_description}
 
           """)
 
@@ -109,11 +106,11 @@ def the_encounter():
 
           {scene_3_description}
 
-          Option 1: {option_6_description}
+              Option 1: {option_6_description}
 
-          Option 2: {option_7_description}
+              Option 2: {option_7_description}
 
-          Which option do you choose? 1 or 2?
+            Which option do you choose? 1 or 2?
           """)
     try:
         the_encounter_choice = int(input('>>> '))
@@ -123,28 +120,57 @@ def the_encounter():
         elif the_encounter_choice == 2:
             print()
             game_over_message = """
-                Ooze (telepathically):
-                Very well, seeker of knowledge. Your fate is written on the canvas of time.
-                The eye's gaze intensifies, and before you can react, it knocks you out.
-                When you wake up, you find yourself on the porch, a prophecy etched onto the inside of your arm,
-                your mind forever marked by the encounter."""
+
+            Ooze (telepathically):
+            Very well, seeker of knowledge. Your fate is written on the canvas of time.
+            The eye's gaze intensifies, and before you can react, it knocks you out.
+            When you wake up, you find yourself on the porch, a prophecy etched onto the inside of your arm,
+            your mind forever marked by the encounter."""
             print()
             random_prophecy = get_random_prophecy()
+
             print_somewhat_fast(game_over_message)
             print()
             print_slowly(random_prophecy)
             print()
+
+              
+            print_somewhat_fast("""
+   _______.-. .-. .--. .-. .-.,-. .-.  .---.                               
+  |__   __| | | |/ /\ \|  \| || |/ /  ( .-._)                              
+    )| |  | `-' / /__\ \   | || | /  (_) \                                 
+    (_) |  | .-. |  __  | |\  || | \  _  \ \                                
+      | |  | | |)| |  |)| | |)|| |) \( `-'  )                               
+      `-'  /(  (_)_|  (_)(  (_)|((_)-'`----'                                
+          (__)         (__)    (_)                                          
+    ,---. .---. ,---.     ,---. ,-.      .--.-.   .-.,-..-. .-.  ,--,  .-.  
+    | .-'/ .-. )| .-.\    | .-.\| |     / /\ \ \_/ )/|(||  \| |.' .'   |  ) 
+    | `-.| | |(_) `-'/    | |-' ) |    / /__\ \   (_)(_)|   | ||  |  __| /  
+    | .-'| | | ||   (     | |--'| |    |  __  |) (   | || |\  |\  \ ( _)/   
+    | |  \ `-' /| |\ \    | |   | `--. | |  |)|| |   | || | |)| \  `-) |    
+    )\|   )---' |_| \)\   /(    |( __.'|_|  (_)(_|   `-'/(  (_) )\____(_)   
+   (__)  (_)        (__) (__)   (_)          (__)      (__)    (__)         
+                   """)
+            print()
+            print_slowly("""
+        In the dark recesses of your choices, the game concludes. 
+        Yet in the shadows, infinite narratives linger. 
+        Restart, and let the eerie echoes of your decisions haunt your next journey.
+                         """)
+            
+
         else:
             print("Make a valid selection or death and destruction await you.")
             return
     except ValueError:
-        print("Please enter a valid number (1 or 2).")
+
+            print("Please enter a valid number (1 or 2).")  
+
 
 
 def game_over(game_over_id):
 
     print_slowly(game_over_description(game_over_id))
-
     print_somewhat_fast("""
   ▄████  ▄▄▄      ███▄ ▄███▓▓█████     ▒█████   ██▒   █▓▓█████  ██▀███
  ██▒ ▀█▒▒████▄   ▓██▒▀█▀ ██▒▓█   ▀    ▒██▒  ██▒▓██░   █▒▓█   ▀ ▓██ ▒ ██▒
@@ -185,3 +211,7 @@ def game_over(game_over_id):
 
     except ValueError:
         print("Please enter a valid number (0, 1, or ")
+
+
+
+  
