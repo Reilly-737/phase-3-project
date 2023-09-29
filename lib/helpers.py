@@ -51,18 +51,33 @@ def print_somewhat_fast(output):
     print()
 
 
+def print_table(headers, data):
+    # Calculate the maximum width for each column based on the headers and data
+    column_widths = [max(len(str(item)) for item in col)
+                     for col in zip(headers, *data)]
+
+    # Print the table headers
+    for header, width in zip(headers, column_widths):
+        print(f"{header:{width}}", end=" | ")
+    print("\n" + "-" * (sum(column_widths) + len(column_widths) * 3 - 1))
+
+    # Print the table data
+    for row in data:
+        for item, width in zip(row, column_widths):
+            print(f"{item:{width}}", end=" | ")
+        print()
+
+
 def list_players():
     players = Players.select()
 
     if players:
+        headers = ["Player Name", "Save Location"]
+        data = []
         for player in players:
             player_progress = display_scene_name(player.scene_id)
-            print_slowly(f"Player Name: {player.player_name}")
-            print_slowly(f"    Save Location: {player_progress}")
-            print("----------------------------")
-            print()
-            print()
-            print()
+            data.append([player.player_name, player_progress])
+        print_table(headers, data)
 
     else:
         print("No players found.")

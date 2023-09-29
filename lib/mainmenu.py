@@ -9,25 +9,32 @@ def main_menu():
     print_slowly(game_instructions)
 
     while True:
-        print("----------------------------")
-        print("1. Enter Player Name")
-        print("----------------------------")
-        print("2. Delete Player Name")
-        print("----------------------------")
-        print("3. Display All Player Names")
-        print("----------------------------")
-        print("4. Edit Player Name")
-        print("----------------------------")
-        print("5. Quit")
-        print("----------------------------")
-        print()
+        print("""
 
-        print()
-        print()
-        print()
+
+
+            ----------------------------
+            1. Enter Player Name
+            ----------------------------
+            2. Delete Player Name
+            ----------------------------
+            3. Display All Player Names
+            ----------------------------
+            4. Edit Player Name
+            ----------------------------
+            5. Quit
+            ----------------------------
+            """)
+
+        print("""
+
+
+            """)
         choice = input("Select an option: ")
-        print()
-        print()
+        print("""
+
+
+            """)
 
         if choice == '1':
             print()
