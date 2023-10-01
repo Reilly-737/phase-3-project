@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import ipdb
+# import ipdb
 
 from models.model_1 import *
 from mainmenu import *
@@ -27,8 +27,6 @@ def introduction():
             Which option do you choose? 1 or 2?
 
           """)
-      
-   
 
     try:
         introchoice = int(input('>>> '))
@@ -88,7 +86,7 @@ def following_the_cat():
         if following_the_cat_choice == 1:
             new_scene_id = 3
             ipdb.set_trace()
-            update_player_scene(get_current_player(), new_scene_id)
+            # update_player_scene(get_current_player(), new_scene_id)
             the_encounter()
         else:
             print("Make a valid selection")
@@ -134,38 +132,35 @@ def the_encounter():
             print_slowly(random_prophecy)
             print()
 
-              
             print_somewhat_fast("""
-   _______.-. .-. .--. .-. .-.,-. .-.  .---.                               
-  |__   __| | | |/ /\ \|  \| || |/ /  ( .-._)                              
-    )| |  | `-' / /__\ \   | || | /  (_) \                                 
-    (_) |  | .-. |  __  | |\  || | \  _  \ \                                
-      | |  | | |)| |  |)| | |)|| |) \( `-'  )                               
-      `-'  /(  (_)_|  (_)(  (_)|((_)-'`----'                                
-          (__)         (__)    (_)                                          
-    ,---. .---. ,---.     ,---. ,-.      .--.-.   .-.,-..-. .-.  ,--,  .-.  
-    | .-'/ .-. )| .-.\    | .-.\| |     / /\ \ \_/ )/|(||  \| |.' .'   |  ) 
-    | `-.| | |(_) `-'/    | |-' ) |    / /__\ \   (_)(_)|   | ||  |  __| /  
-    | .-'| | | ||   (     | |--'| |    |  __  |) (   | || |\  |\  \ ( _)/   
-    | |  \ `-' /| |\ \    | |   | `--. | |  |)|| |   | || | |)| \  `-) |    
-    )\|   )---' |_| \)\   /(    |( __.'|_|  (_)(_|   `-'/(  (_) )\____(_)   
-   (__)  (_)        (__) (__)   (_)          (__)      (__)    (__)         
+   _______.-. .-. .--. .-. .-.,-. .-.  .---.
+  |__   __| | | |/ /\ \|  \| || |/ /  ( .-._)
+    )| |  | `-' / /__\ \   | || | /  (_) \
+    (_) |  | .-. |  __  | |\  || | \  _  \ \
+      | |  | | |)| |  |)| | |)|| |) \( `-'  )
+      `-'  /(  (_)_|  (_)(  (_)|((_)-'`----'
+          (__)         (__)    (_)
+    ,---. .---. ,---.     ,---. ,-.      .--.-.   .-.,-..-. .-.  ,--,  .-.
+    | .-'/ .-. )| .-.\    | .-.\| |     / /\ \ \_/ )/|(||  \| |.' .'   |  )
+    | `-.| | |(_) `-'/    | |-' ) |    / /__\ \   (_)(_)|   | ||  |  __| /
+    | .-'| | | ||   (     | |--'| |    |  __  |) (   | || |\  |\  \ ( _)/
+    | |  \ `-' /| |\ \    | |   | `--. | |  |)|| |   | || | |)| \  `-) |
+    )\|   )---' |_| \)\   /(    |( __.'|_|  (_)(_|   `-'/(  (_) )\____(_)
+   (__)  (_)        (__) (__)   (_)          (__)      (__)    (__)
                    """)
             print()
             print_slowly("""
-        In the dark recesses of your choices, the game concludes. 
-        Yet in the shadows, infinite narratives linger. 
+        In the dark recesses of your choices, the game concludes.
+        Yet in the shadows, infinite narratives linger.
         Restart, and let the eerie echoes of your decisions haunt your next journey.
                          """)
-            
 
         else:
             print("Make a valid selection or death and destruction await you.")
             return
     except ValueError:
 
-            print("Please enter a valid number (1 or 2).")  
-
+        print("Please enter a valid number (1 or 2).")
 
 
 def game_over(game_over_id):
@@ -211,7 +206,3 @@ def game_over(game_over_id):
 
     except ValueError:
         print("Please enter a valid number (0, 1, or ")
-
-
-
-  
